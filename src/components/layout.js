@@ -11,7 +11,7 @@ import 'normalize.css';
 import 'typeface-roboto';
 import 'typeface-open-sans';
 import 'typeface-walter-turncoat';
-import 'material-icons';
+import 'material-icons/css/material-icons.min.css';
 import '@material/layout-grid/dist/mdc.layout-grid.css';
 import '@material/top-app-bar/dist/mdc.top-app-bar.css';
 import '@material/button/dist/mdc.button.css';

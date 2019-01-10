@@ -232,25 +232,22 @@ const IndexPage = () => (
           PORTFOLIO
         </Typography>
         <GridList tileAspect="4x3">
-          {[0, 1, 2, 3, 4, 5].map((val, i) => {
-            console.log(val, i);
-            return (
-              <GridTile key={i} style={{ width: '33%' }}>
-                <GridTilePrimary>
-                  <GridTilePrimaryContent>
-                    <img
-                      src="https://material-components-web.appspot.com/images/1-1.jpg"
-                      alt="test"
-                    />
-                  </GridTilePrimaryContent>
-                </GridTilePrimary>
-                <GridTileSecondary>
-                  <GridTileIcon icon="info" />
-                  <GridTileTitle>Tile {i + 1}</GridTileTitle>
-                </GridTileSecondary>
-              </GridTile>
-            );
-          })}
+          {[0, 1, 2, 3, 4, 5].map((val, i) => (
+            <GridTile key={i} style={{ width: '33%' }}>
+              <GridTilePrimary>
+                <GridTilePrimaryContent>
+                  <img
+                    src="https://material-components-web.appspot.com/images/1-1.jpg"
+                    alt="test"
+                  />
+                </GridTilePrimaryContent>
+              </GridTilePrimary>
+              <GridTileSecondary>
+                <GridTileIcon icon="info" />
+                <GridTileTitle>Tile {i + 1}</GridTileTitle>
+              </GridTileSecondary>
+            </GridTile>
+          ))}
         </GridList>
       </GridCell>
     </Grid>

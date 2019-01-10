@@ -9,7 +9,12 @@ const Footer = () => (
       <GridCell span={12} style={{ textAlign: 'center' }}>
         © {new Date().getFullYear()}, Built with
         {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <a
+          href="https://www.gatsbyjs.org"
+          target="_blank"
+          rel="noopener noreferrer">
+          Gatsby
+        </a>
       </GridCell>
     </Grid>
   </footer>
