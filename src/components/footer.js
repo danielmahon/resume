@@ -4,9 +4,9 @@ import React from 'react';
 import { Grid, GridCell, GridInner } from '@rmwc/grid';
 
 const Footer = () => (
-  <footer>
-    <Grid>
-      <GridCell span={12}>
+  <footer style={{ paddingTop: '4rem' }}>
+    <Grid theme="onPrimary primaryBg">
+      <GridCell span={12} style={{ textAlign: 'center' }}>
         © {new Date().getFullYear()}, Built with
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>

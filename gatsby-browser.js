@@ -5,3 +5,11 @@
  */
 
 // You can delete this file if you're not using it
+import React from 'react';
+import { ThemeProvider } from '@rmwc/theme';
+
+const options = {};
+
+export const wrapRootElement = ({ element }) => {
+  return <ThemeProvider options={options}>{element}</ThemeProvider>;
+};

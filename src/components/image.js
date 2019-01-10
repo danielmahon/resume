@@ -1,6 +1,6 @@
-import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -13,20 +13,49 @@ import Img from 'gatsby-image'
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const Image = () => (
+const Image = ({ path }) => (
   <StaticQuery
     query={graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-          childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid
+        images: allFile {
+          edges {
+            node {
+              name
+              relativePath
+              childImageSharp {
+                fluid(maxWidth: 640) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
             }
           }
         }
       }
     `}
-    render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
+    render={data => {
+      if (!path) return null;
+      const image = data.images.edges.find(n => {
+        return n.node.relativePath.includes(path);
+      });
+      if (!image) return null;
+      return <Img fluid={image.node.childImageSharp.fluid} />;
+    }}
   />
-)
-export default Image
+);
+// const Image = () => (
+//   <StaticQuery
+//     query={graphql`
+//       query {
+//         placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+//           childImageSharp {
+//             fluid(maxWidth: 300) {
+//               ...GatsbyImageSharpFluid
+//             }
+//           }
+//         }
+//       }
+//     `}
+//     render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
+//   />
+// )
+export default Image;
