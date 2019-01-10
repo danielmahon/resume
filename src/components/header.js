@@ -30,6 +30,9 @@ const StyledHeadroom = styled(Headroom)`
   .headroom--unpinned .mdc-top-app-bar {
     background-color: rgba(0, 0, 0, 0);
   }
+  @media screen and (max-width: 599px) {
+    display: none;
+  }
 `;
 const TopAppBarSectionCentered = styled(TopAppBarSection)`
   justify-content: center;
@@ -79,10 +82,23 @@ const Hero = styled.div`
   .mdc-typography--headline1 {
     font-family: 'Open Sans';
     font-weight: 600;
+    margin: 0 2rem;
   }
   .mdc-typography--body1 {
     margin: 1rem 20%;
     text-align: center;
+  }
+  @media screen and (max-width: 599px) {
+    height: 100vh;
+    .mdc-typography--headline1 {
+      font-size: 4rem;
+      line-height: 4rem;
+      word-spacing: 100vw;
+      text-align: center;
+    }
+    .mdc-typography--body1 {
+      margin: 1rem 2rem;
+    }
   }
 `;
 const Icons = styled.div`

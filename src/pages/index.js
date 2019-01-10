@@ -39,6 +39,14 @@ const Avatar = styled.div`
     width: 200px;
   }
 `;
+const StyledGridTile = styled(GridTile)`
+  &&& {
+    width: 100%;
+    @media screen and (min-width: 600px) {
+      width: 33%;
+    }
+  }
+`;
 
 const IndexPage = () => (
   <Layout>
@@ -103,10 +111,10 @@ const IndexPage = () => (
               dan@mahonstudios.com
             </Typography>
           </GridCell>
-          <GridCell span={6}>
+          <GridCell span={6} style={{ textAlign: 'center' }}>
             <Button
               raised
-              style={{ marginTop: '1rem' }}
+              style={{ margin: '1rem 0 2rem 0' }}
               onClick={() => window.alert('download resume')}>
               Download my Resumé
             </Button>
@@ -233,7 +241,7 @@ const IndexPage = () => (
         </Typography>
         <GridList tileAspect="4x3">
           {[0, 1, 2, 3, 4, 5].map((val, i) => (
-            <GridTile key={i} style={{ width: '33%' }}>
+            <StyledGridTile key={i}>
               <GridTilePrimary>
                 <GridTilePrimaryContent>
                   <img
@@ -246,7 +254,7 @@ const IndexPage = () => (
                 <GridTileIcon icon="info" />
                 <GridTileTitle>Tile {i + 1}</GridTileTitle>
               </GridTileSecondary>
-            </GridTile>
+            </StyledGridTile>
           ))}
         </GridList>
       </GridCell>

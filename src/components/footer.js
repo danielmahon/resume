@@ -5,7 +5,7 @@ import { Grid, GridCell, GridInner } from '@rmwc/grid';
 
 const Footer = () => (
   <footer style={{ paddingTop: '4rem' }}>
-    <Grid theme="onPrimary primaryBg">
+    <Grid>
       <GridCell span={12} style={{ textAlign: 'center' }}>
         © {new Date().getFullYear()}, Built with
         {` `}
