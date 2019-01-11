@@ -15,7 +15,15 @@ const detailsQuery = graphql`
   }
 `;
 
-const SEO = ({ description, lang, meta, keywords, title, bodyAttributes }) => {
+const SEO = ({
+  description,
+  lang,
+  meta,
+  keywords,
+  title,
+  bodyAttributes,
+  exact,
+}) => {
   return (
     <StaticQuery
       query={detailsQuery}
@@ -29,7 +37,9 @@ const SEO = ({ description, lang, meta, keywords, title, bodyAttributes }) => {
             }}
             title={title}
             bodyAttributes={bodyAttributes}
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+            titleTemplate={
+              exact ? null : `%s | ${data.site.siteMetadata.title}`
+            }
             meta={[
               {
                 name: `description`,
@@ -88,6 +98,7 @@ SEO.defaultProps = {
 };
 
 SEO.propTypes = {
+  exact: PropTypes.bool,
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.array,

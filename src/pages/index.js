@@ -55,7 +55,11 @@ const StyledGridTile = styled(GridTile)`
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO
+      title="Welcome, I'm Daniel Mahon"
+      exact={true}
+      keywords={[`gatsby`, `application`, `react`]}
+    />
     <Element name="about" />
     <AboutWrapper>
       <About>
