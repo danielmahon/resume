@@ -17,6 +17,8 @@ import styled from 'styled-components';
 import Headroom from 'react-headroom';
 import simpleIcons from 'simple-icons';
 
+import Sky from './sky';
+
 const StyledHeadroom = styled(Headroom)`
   .mdc-top-app-bar {
     transition: background-color 275ms ease;
@@ -63,22 +65,11 @@ const Hero = styled.div`
   display: flex;
   flex-direction: column;
   height: 65vh;
-  min-height: 480px;
+  min-height: 384px;
+  max-height: 768px;
   justify-content: center;
   align-items: center;
   position: relative;
-  .img-wrapper {
-    position: absolute;
-    height: 100%;
-    z-index: -1;
-    img {
-      object-fit: cover;
-      object-position: bottom;
-      height: 100%;
-      min-height: 480px;
-      width: 100vw;
-    }
-  }
   .mdc-typography--headline1 {
     font-family: 'Open Sans';
     font-weight: 600;
@@ -113,18 +104,16 @@ const Header = () => (
           <TopAppBarSectionCentered>
             <Button>Home</Button>
             <Button>About</Button>
-            <Button>Resume</Button>
-            <Button>Portfolio</Button>
-            <Button>Testimonials</Button>
+            <Button>Work</Button>
+            <Button>Skills</Button>
+            <Button>Education</Button>
             <Button>Contact</Button>
           </TopAppBarSectionCentered>
         </TopAppBarRow>
       </TopAppBar>
     </StyledHeadroom>
     <Hero>
-      <div className="img-wrapper">
-        <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&q=80&sat=-50&nrs=100&exp=-10" />
-      </div>
+      <Sky />
       <Typography use="headline1" theme="textPrimaryOnDark">
         I'm Daniel Mahon.
       </Typography>
@@ -135,7 +124,7 @@ const Header = () => (
         excepteur pariatur.
       </Typography>
       <Icons>
-        <IconButton
+        {/* <IconButton
           icon={
             <span
               dangerouslySetInnerHTML={{ __html: simpleIcons.LinkedIn.svg }}
@@ -146,7 +135,7 @@ const Header = () => (
           }
           rel="noopener noreferrer"
           aria-label="Find me on LinkedIn!"
-        />
+        /> */}
         <IconButton
           icon={
             <span
@@ -180,7 +169,9 @@ const Header = () => (
         <IconButton
           icon={
             <span
-              dangerouslySetInnerHTML={{ __html: simpleIcons['Instagram'].svg }}
+              dangerouslySetInnerHTML={{
+                __html: simpleIcons['Instagram'].svg,
+              }}
             />
           }
           onClick={() => window.open('https://www.instagram.com/daniel_mahon/')}

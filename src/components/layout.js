@@ -19,6 +19,7 @@ import '@material/typography/dist/mdc.typography.css';
 import '@material/theme/dist/mdc.theme.css';
 import '@material/icon-button/dist/mdc.icon-button.css';
 import '@material/grid-list/dist/mdc.grid-list.css';
+import '@material/image-list/dist/mdc.image-list.css';
 
 // Import custom styles
 import './layout.css';
