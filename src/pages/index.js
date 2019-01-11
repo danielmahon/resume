@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import { Grid, GridCell, GridInner } from '@rmwc/grid';
 import { Typography } from '@rmwc/typography';
 import { Button } from '@rmwc/button';
@@ -13,6 +12,7 @@ import {
   GridTileSecondary,
   GridTileTitle,
 } from '@rmwc/grid-list';
+import { Element } from 'react-scroll';
 
 import Layout from '../components/layout';
 import Image from '../components/image';
@@ -56,6 +56,7 @@ const StyledGridTile = styled(GridTile)`
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <Element name="about" />
     <AboutWrapper>
       <About>
         <GridCell span={4} style={{ textAlign: 'center' }}>
@@ -103,6 +104,8 @@ const IndexPage = () => (
             I want to listen to your ideas... you'll want to listen to mine.
           </Typography>
 
+          <Element name="contact" />
+
           <Typography use="headline4" tag="div">
             Contact Details
           </Typography>
@@ -138,6 +141,7 @@ const IndexPage = () => (
         </GridCell>
       </About>
     </AboutWrapper>
+    <Element name="work" />
     <Grid>
       <GridCell span={12}>
         <GridList tileAspect="4x3">
@@ -205,6 +209,12 @@ const IndexPage = () => (
             <li>Illustration</li>
             <li>Copywriting</li>
           </ul>
+        </Typography>
+        <Typography use="body1" tag="p">
+          <Typography use="overline" tag="span" style={{ display: 'block' }}>
+            Awards
+          </Typography>
+          Lorem ipsum dolor...
         </Typography>
         <hr />
         {/* Job */}
@@ -283,6 +293,7 @@ const IndexPage = () => (
         </Typography>
       </GridCell>
     </Grid>
+    <Element name="skills" />
     <Grid>
       <GridCell span={4} style={{ textAlign: 'center' }}>
         <Typography use="headline4" tag="p">
@@ -293,6 +304,7 @@ const IndexPage = () => (
         <Skills />
       </GridCell>
     </Grid>
+    <Element name="education" />
     <Grid>
       <GridCell span={4} style={{ textAlign: 'center' }}>
         <Typography use="headline4" tag="p">

@@ -1,21 +1,12 @@
-import { navigate } from 'gatsby';
-import PropTypes from 'prop-types';
 import React from 'react';
-import { Grid, GridCell } from '@rmwc/grid';
 import { IconButton } from '@rmwc/icon-button';
-import { Button as RMWCButton, ButtonIcon } from '@rmwc/button';
+import { Button as RMWCButton } from '@rmwc/button';
 import { Typography } from '@rmwc/typography';
-import {
-  TopAppBar,
-  TopAppBarRow,
-  TopAppBarSection,
-  TopAppBarNavigationIcon,
-  TopAppBarFixedAdjust,
-  TopAppBarTitle,
-} from '@rmwc/top-app-bar';
+import { TopAppBar, TopAppBarRow, TopAppBarSection } from '@rmwc/top-app-bar';
 import styled from 'styled-components';
 import Headroom from 'react-headroom';
 import simpleIcons from 'simple-icons';
+import { animateScroll, scroller } from 'react-scroll';
 
 import Sky from './sky';
 
@@ -74,10 +65,12 @@ const Hero = styled.div`
     font-family: 'Open Sans';
     font-weight: 600;
     margin: 0 2rem;
+    z-index: 1;
   }
   .mdc-typography--body1 {
     margin: 1rem 20%;
     text-align: center;
+    z-index: 1;
   }
   @media screen and (max-width: 599px) {
     height: 100vh;
@@ -102,12 +95,26 @@ const Header = () => (
       <TopAppBar>
         <TopAppBarRow>
           <TopAppBarSectionCentered>
-            <Button>Home</Button>
-            <Button>About</Button>
-            <Button>Work</Button>
-            <Button>Skills</Button>
-            <Button>Education</Button>
-            <Button>Contact</Button>
+            <Button onClick={() => animateScroll.scrollToTop()}>Home</Button>
+            <Button
+              onClick={() => scroller.scrollTo('about', { smooth: true })}>
+              About
+            </Button>
+            <Button onClick={() => scroller.scrollTo('work', { smooth: true })}>
+              Work
+            </Button>
+            <Button
+              onClick={() => scroller.scrollTo('skills', { smooth: true })}>
+              Skills
+            </Button>
+            <Button
+              onClick={() => scroller.scrollTo('education', { smooth: true })}>
+              Education
+            </Button>
+            <Button
+              onClick={() => scroller.scrollTo('contact', { smooth: true })}>
+              Contact
+            </Button>
           </TopAppBarSectionCentered>
         </TopAppBarRow>
       </TopAppBar>
@@ -118,10 +125,7 @@ const Header = () => (
         I'm Daniel Mahon.
       </Typography>
       <Typography use="body1" theme="textPrimaryOnDark">
-        Occaecat commodo laborum commodo sunt Lorem excepteur ea occaecat irure
-        esse reprehenderit. Enim ullamco ipsum esse adipisicing aute Lorem magna
-        incididunt. Duis ipsum fugiat ullamco aute pariatur dolore irure ullamco
-        excepteur pariatur.
+        I create engaging experiences through paper, screen, and matter.
       </Typography>
       <Icons>
         {/* <IconButton

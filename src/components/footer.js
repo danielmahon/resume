@@ -1,7 +1,7 @@
 // import { Link } from 'gatsby';
 // import PropTypes from 'prop-types';
 import React from 'react';
-import { Grid, GridCell, GridInner } from '@rmwc/grid';
+import { Grid, GridCell } from '@rmwc/grid';
 import { Typography } from '@rmwc/typography';
 import { Button } from '@rmwc/button';
 
