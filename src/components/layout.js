@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import FontFaceObserver from 'fontfaceobserver';
@@ -38,30 +38,19 @@ class Layout extends PureComponent {
     const { ready } = this.state;
     const { children, secondary } = this.props;
     return (
-      <StaticQuery
-        query={graphql`
-          query SiteTitleQuery {
-            site {
-              siteMetadata {
-                title
-              }
-            }
-          }
-        `}
-        render={data => (
-          <div className={ready ? 'root fonts-loaded' : 'root fonts-loading'}>
-            <SEO bodyAttributes={{ class: 'mdc-typography' }}>
-              <link
-                href="https://fonts.googleapis.com/icon?family=Material+Icons"
-                rel="stylesheet"
-              />
-            </SEO>
-            {!secondary && <Header ready={ready} />}
-            <main>{children}</main>
-            <Footer />
-          </div>
-        )}
-      />
+      <div className={ready ? 'root fonts-loaded' : 'root fonts-loading'}>
+        <SEO bodyAttributes={{ class: 'mdc-typography' }}>
+          <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+          />
+        </SEO>
+        <Fragment>
+          {!secondary && <Header ready={ready} />}
+          <main>{children}</main>
+          <Footer />
+        </Fragment>
+      </div>
     );
   };
 }
