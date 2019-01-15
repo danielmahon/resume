@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { Grid, GridCell, GridInner } from '@rmwc/grid';
 import { Typography } from '@rmwc/typography';
 import { Button } from '@rmwc/button';
@@ -15,7 +16,7 @@ import {
 import { Element } from 'react-scroll';
 
 import Layout from '../components/layout';
-import Image from '../components/image';
+import { Image } from '../components/image';
 import SEO from '../components/seo';
 import Skills from '../components/skills';
 
@@ -65,7 +66,7 @@ const IndexPage = () => (
       <About>
         <GridCell span={4} style={{ textAlign: 'center' }}>
           <Avatar>
-            <Image path="profile.jpg" />
+            <Image src="profile.jpg" />
           </Avatar>
         </GridCell>
         <GridCell span={7}>
@@ -73,32 +74,32 @@ const IndexPage = () => (
             About Me
           </Typography>
           <Typography use="body1" tag="p">
-            Excepteur sunt ea incididunt nulla nostrud eiusmod minim culpa
-            veniam duis mollit laborum id. Nostrud deserunt laborum laborum sint
-            nulla id elit enim mollit consectetur voluptate ullamco aliqua.
-            Reprehenderit enim anim sunt ipsum sunt consectetur laborum qui
-            incididunt nulla non. Occaecat excepteur officia officia incididunt
-            sit commodo elit qui proident ut dolor eiusmod. Fugiat eu veniam
-            laborum mollit in consectetur eu pariatur dolor ut incididunt id ad
-            consectetur. Dolor est amet aliquip cillum eiusmod deserunt nulla
-            ipsum. Eu incididunt laborum do proident deserunt.
-          </Typography>
-
-          <Typography use="body1" tag="p">
-            Proident qui sint mollit anim anim dolore cillum aliquip irure
-            laboris mollit labore cillum incididunt. In sint adipisicing ea
-            consequat aliqua do nisi et fugiat et non. Voluptate irure elit
-            adipisicing labore pariatur ad aliqua. Reprehenderit consectetur
-            aute mollit magna Lorem commodo sint reprehenderit nisi aute.
-            Laboris labore incididunt voluptate proident laboris duis aute
-            nostrud duis consectetur et velit labore. Adipisicing deserunt
-            fugiat id laboris et est.
-          </Typography>
-
-          <Typography use="body1" tag="p">
-            Cupidatat adipisicing Lorem ad nostrud officia dolore amet deserunt
-            proident. Sit consequat excepteur culpa cupidatat enim deserunt.
-            Dolor dolor esse eiusmod consectetur exercitation exercitation do.
+            My name is Daniel, and to put it simply, I love making things look
+            nice and do stuff. I have worked in the creative industry for most
+            of my life and have had the privilege to learn and experience many
+            creative disciplines. I enjoy working solo but especially relish the
+            opportunity to work alongside other talented team members on unique
+            and impactful projects.
+            <br />
+            <br />
+            Having been part of a family advertising agency for close to 20
+            years, I have had more than a variety of roles and responsibilities.
+            Starting as a teenager, I developed and enlarged negatives in a
+            darkroom, eventually learning commercial photography and
+            videography. Along with this came some experience in set design and
+            fabrication. I was also asked to work on print campaigns which lead
+            to a broader interest in design, digital media, and motion graphics.
+            After designing hundreds of marketing materials, campaigns, and
+            websites, I found myself interested in interactive design and
+            started into software and web development. This lead to learning
+            Coldfusion, Javascript, HTML, CSS, Flash, Appcelerator Titanium,
+            DevOps, etc. Lately, utilizing NodeJS, the Javascript "full-stack"
+            environment, along with frameworks like ReactJS for creating
+            interactive applications for any device (web, mobile, desktop,
+            embedded).
+            <br />
+            <br />
+            [future]
           </Typography>
 
           <Typography
@@ -151,15 +152,20 @@ const IndexPage = () => (
         <GridList tileAspect="4x3">
           {[0, 1, 2, 3, 4, 5].map((val, i) => (
             <StyledGridTile key={i}>
-              <GridTilePrimary>
-                <GridTilePrimaryContent>
-                  <img src={`https://source.unsplash.com/random`} alt="test" />
-                </GridTilePrimaryContent>
-              </GridTilePrimary>
-              <GridTileSecondary>
-                <GridTileIcon icon="info" />
-                <GridTileTitle>Project {i + 1}</GridTileTitle>
-              </GridTileSecondary>
+              <Link to="/projects/one">
+                <GridTilePrimary>
+                  <GridTilePrimaryContent>
+                    <img
+                      src={`https://source.unsplash.com/random`}
+                      alt="test"
+                    />
+                  </GridTilePrimaryContent>
+                </GridTilePrimary>
+                <GridTileSecondary>
+                  <GridTileIcon icon="info" />
+                  <GridTileTitle>Project {i + 1}</GridTileTitle>
+                </GridTileSecondary>
+              </Link>
             </StyledGridTile>
           ))}
         </GridList>
@@ -194,10 +200,11 @@ const IndexPage = () => (
         </Typography>
         <Typography use="body1" tag="p">
           Mahon Studios is a full service interactive creative agency. Makers at
-          heart, and with over 25 years of experience across a broad array of
+          heart, and with over 35 years of experience across a broad array of
           disciplines, Mahon Studios has the skill and motivation to help you
           achieve your vision.
         </Typography>
+
         <Typography use="body1" tag="div">
           <Typography use="overline" tag="span" style={{ display: 'block' }}>
             Responsibilities
@@ -333,7 +340,7 @@ const IndexPage = () => (
           <Typography use="overline" tag="span" style={{ display: 'block' }}>
             Activities and Societies
           </Typography>
-          Phi Gamma Delta, International Business Club, H.O.L.A (spanish club),
+          Phi Gamma Delta, International Business Club, H.O.L.A Spanish Club,
           Various Art Clubs, Intramural Soccer
         </Typography>
         <Typography use="body1" tag="p">
@@ -356,7 +363,7 @@ const IndexPage = () => (
             Relevant Coursework
           </Typography>
           Architecture elective (4 years), Art elective (4 years), Advanced
-          Placement (AP) Physics, Organic Chemistry
+          Placement (AP) Physics, Woodshop, Set Design (Theatre)
         </Typography>
       </GridCell>
     </Grid>

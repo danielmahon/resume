@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { PureComponent, Component, Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import styled from 'styled-components';
+import {
+  Dialog,
+  DialogContent,
+  DialogActions,
+  DialogButton,
+} from '@rmwc/dialog';
+import { Elevation } from '@rmwc/elevation';
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -13,49 +21,95 @@ import Img from 'gatsby-image';
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const Image = ({ path }) => (
-  <StaticQuery
-    query={graphql`
-      query {
-        images: allFile {
-          edges {
-            node {
-              name
-              relativePath
-              childImageSharp {
-                fluid(maxWidth: 640) {
-                  ...GatsbyImageSharpFluid
+const ProjectImageWrapper = styled(Elevation)`
+  cursor: pointer;
+  border-radius: 0.25rem;
+  .gatsby-image-wrapper {
+    width: 100%;
+    max-height: 265px;
+    border-radius: inherit;
+  }
+`;
+const FullDialog = styled(Dialog)`
+  &&& {
+    .mdc-dialog__surface {
+      max-width: none;
+    }
+    .mdc-dialog__scrim {
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+    .gatsby-image-wrapper {
+      width: 80vw;
+      max-height: 80vw;
+      border-radius: 0.25rem;
+    }
+  }
+`;
+
+export class Image extends PureComponent {
+  render = () => {
+    const { src } = this.props;
+    return (
+      <StaticQuery
+        query={graphql`
+          query {
+            images: allFile {
+              edges {
+                node {
+                  name
+                  relativePath
+                  childImageSharp {
+                    fluid(maxWidth: 1280) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
                 }
               }
             }
           }
-        }
-      }
-    `}
-    render={data => {
-      if (!path) return null;
-      const image = data.images.edges.find(n => {
-        return n.node.relativePath.includes(path);
-      });
-      if (!image) return null;
-      return <Img fluid={image.node.childImageSharp.fluid} />;
-    }}
-  />
-);
-// const Image = () => (
-//   <StaticQuery
-//     query={graphql`
-//       query {
-//         placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-//           childImageSharp {
-//             fluid(maxWidth: 300) {
-//               ...GatsbyImageSharpFluid
-//             }
-//           }
-//         }
-//       }
-//     `}
-//     render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
-//   />
-// )
-export default Image;
+        `}
+        render={data => {
+          if (!src) return null;
+          const image = data.images.edges.find(n => {
+            return n.node.relativePath.includes(src);
+          });
+          if (!image) return null;
+          return <Img fluid={image.node.childImageSharp.fluid} />;
+        }}
+      />
+    );
+  };
+}
+export class ProjectImage extends PureComponent {
+  state = { open: false, hover: false };
+  render = () => {
+    const { src } = this.props;
+    const { open, hover } = this.state;
+    return (
+      <Fragment>
+        <ProjectImageWrapper
+          z={hover ? 8 : 0}
+          transition
+          onClick={() => this.setState({ open: true })}
+          onMouseOver={() => this.setState({ hover: true })}
+          onMouseOut={() => this.setState({ hover: false })}>
+          <Image src={src} />
+        </ProjectImageWrapper>
+
+        <FullDialog
+          open={open}
+          onClose={evt => {
+            console.log(evt.detail);
+            this.setState({ open: false });
+          }}>
+          <DialogContent>
+            <Image src={src} />
+          </DialogContent>
+          <DialogActions>
+            <DialogButton action="close">Close</DialogButton>
+          </DialogActions>
+        </FullDialog>
+      </Fragment>
+    );
+  };
+}

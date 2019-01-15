@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { IconButton } from '@rmwc/icon-button';
 import { Button as RMWCButton } from '@rmwc/button';
 import { Typography } from '@rmwc/typography';
@@ -7,7 +7,8 @@ import styled from 'styled-components';
 import Headroom from 'react-headroom';
 import simpleIcons from 'simple-icons';
 import { animateScroll, scroller } from 'react-scroll';
-
+import { Keyframes, config, animated } from 'react-spring';
+import delay from 'delay';
 import Sky from './sky';
 
 const StyledHeadroom = styled(Headroom)`
@@ -63,7 +64,8 @@ const Hero = styled.div`
   position: relative;
   .mdc-typography--headline1 {
     font-family: 'Open Sans';
-    font-weight: 600;
+    font-size: 5rem;
+    font-weight: 700;
     margin: 0 2rem;
     z-index: 1;
   }
@@ -89,102 +91,162 @@ const Icons = styled.div`
   color: white;
 `;
 
-const Header = () => (
-  <header>
-    <StyledHeadroom disableInlineStyles>
-      <TopAppBar>
-        <TopAppBarRow>
-          <TopAppBarSectionCentered>
-            <Button onClick={() => animateScroll.scrollToTop()}>Home</Button>
-            <Button
-              onClick={() => scroller.scrollTo('about', { smooth: true })}>
-              About
-            </Button>
-            <Button onClick={() => scroller.scrollTo('work', { smooth: true })}>
-              Work
-            </Button>
-            <Button
-              onClick={() => scroller.scrollTo('skills', { smooth: true })}>
-              Skills
-            </Button>
-            <Button
-              onClick={() => scroller.scrollTo('education', { smooth: true })}>
-              Education
-            </Button>
-            <Button
-              onClick={() => scroller.scrollTo('contact', { smooth: true })}>
-              Contact
-            </Button>
-          </TopAppBarSectionCentered>
-        </TopAppBarRow>
-      </TopAppBar>
-    </StyledHeadroom>
-    <Hero>
-      <Sky />
-      <Typography use="headline1" theme="textPrimaryOnDark">
-        I'm Daniel Mahon.
-      </Typography>
-      <Typography use="body1" theme="textPrimaryOnDark">
-        I create engaging experiences through paper, screen, and matter.
-      </Typography>
-      <Icons>
-        {/* <IconButton
-          icon={
-            <span
-              dangerouslySetInnerHTML={{ __html: simpleIcons.LinkedIn.svg }}
-            />
-          }
-          onClick={() =>
-            window.open('https://www.linkedin.com/in/daniel-j-mahon')
-          }
-          rel="noopener noreferrer"
-          aria-label="Find me on LinkedIn!"
-        /> */}
-        <IconButton
-          icon={
-            <span
-              dangerouslySetInnerHTML={{ __html: simpleIcons.GitHub.svg }}
-            />
-          }
-          onClick={() => window.open('https://github.com/danielmahon')}
-          rel="noopener noreferrer"
-          aria-label="Find me on Github!"
-        />
-        <IconButton
-          icon={
-            <span
-              dangerouslySetInnerHTML={{ __html: simpleIcons.Facebook.svg }}
-            />
-          }
-          onClick={() => window.open('https://www.facebook.com/danielmahon')}
-          rel="noopener noreferrer"
-          aria-label="Find me on Facebook!"
-        />
-        <IconButton
-          icon={
-            <span
-              dangerouslySetInnerHTML={{ __html: simpleIcons.Twitter.svg }}
-            />
-          }
-          onClick={() => window.open('https://twitter.com/danielmahon')}
-          rel="noopener noreferrer"
-          aria-label="Follow me on Twitter!"
-        />
-        <IconButton
-          icon={
-            <span
-              dangerouslySetInnerHTML={{
-                __html: simpleIcons['Instagram'].svg,
-              }}
-            />
-          }
-          onClick={() => window.open('https://www.instagram.com/daniel_mahon/')}
-          rel="noopener noreferrer"
-          aria-label="Follow me on Instagram!"
-        />
-      </Icons>
-    </Hero>
-  </header>
-);
+const items = Array.from(`I'm Daniel Mahon.`.replace(/ /g, '\u00a0'));
+
+const TitleAnimation = Keyframes.Trail({
+  hide: {
+    opacity: 0,
+    display: 'inline-block',
+    transform: 'scale(0.75)',
+  },
+  show: async (next, cancel, { onRest }) => {
+    await delay(500);
+    await next({
+      opacity: 1,
+      transform: 'scale(1)',
+    });
+    await delay(1000);
+    onRest();
+  },
+});
+const SubtitleAnimation = Keyframes.Spring({
+  hide: { opacity: 0 },
+  show: async next => {
+    await delay(1000);
+    await next({ opacity: 1 });
+  },
+});
+
+class Header extends PureComponent {
+  state = { step: 1 };
+  render = () => {
+    const { step } = this.state;
+    const { ready } = this.props;
+    return (
+      <header>
+        <StyledHeadroom disableInlineStyles>
+          <TopAppBar>
+            <TopAppBarRow>
+              <TopAppBarSectionCentered>
+                <Button onClick={() => animateScroll.scrollToTop()}>
+                  Home
+                </Button>
+                <Button
+                  onClick={() => scroller.scrollTo('about', { smooth: true })}>
+                  About
+                </Button>
+                <Button
+                  onClick={() => scroller.scrollTo('work', { smooth: true })}>
+                  Work
+                </Button>
+                <Button
+                  onClick={() => scroller.scrollTo('skills', { smooth: true })}>
+                  Skills
+                </Button>
+                <Button
+                  onClick={() =>
+                    scroller.scrollTo('education', { smooth: true })
+                  }>
+                  Education
+                </Button>
+                <Button
+                  onClick={() =>
+                    scroller.scrollTo('contact', { smooth: true })
+                  }>
+                  Contact
+                </Button>
+              </TopAppBarSectionCentered>
+            </TopAppBarRow>
+          </TopAppBar>
+        </StyledHeadroom>
+        <Hero>
+          <Sky />
+          <Typography use="headline1" theme="textPrimaryOnDark">
+            <TitleAnimation
+              native
+              onRest={() => this.setState({ step: step + 1 })}
+              items={items}
+              keys={items.map((item, index) => index)}
+              state={ready ? 'show' : 'hide'}>
+              {item => props => (
+                <animated.span style={props}>{item}</animated.span>
+              )}
+            </TitleAnimation>
+          </Typography>
+          <SubtitleAnimation
+            config={{ tension: 16 }}
+            state={step === 2 ? 'show' : 'hide'}>
+            {props => (
+              <>
+                <Typography use="body1" theme="textPrimaryOnDark" style={props}>
+                  I create engaging experiences through paper, screen, and
+                  matter.
+                </Typography>
+                <Icons style={props}>
+                  <IconButton
+                    icon={
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: simpleIcons.GitHub.svg,
+                        }}
+                      />
+                    }
+                    onClick={() =>
+                      window.open('https://github.com/danielmahon')
+                    }
+                    rel="noopener noreferrer"
+                    aria-label="Find me on Github!"
+                  />
+                  <IconButton
+                    icon={
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: simpleIcons.Facebook.svg,
+                        }}
+                      />
+                    }
+                    onClick={() =>
+                      window.open('https://www.facebook.com/danielmahon')
+                    }
+                    rel="noopener noreferrer"
+                    aria-label="Find me on Facebook!"
+                  />
+                  <IconButton
+                    icon={
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: simpleIcons.Twitter.svg,
+                        }}
+                      />
+                    }
+                    onClick={() =>
+                      window.open('https://twitter.com/danielmahon')
+                    }
+                    rel="noopener noreferrer"
+                    aria-label="Follow me on Twitter!"
+                  />
+                  <IconButton
+                    icon={
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: simpleIcons['Instagram'].svg,
+                        }}
+                      />
+                    }
+                    onClick={() =>
+                      window.open('https://www.instagram.com/daniel_mahon/')
+                    }
+                    rel="noopener noreferrer"
+                    aria-label="Follow me on Instagram!"
+                  />
+                </Icons>
+              </>
+            )}
+          </SubtitleAnimation>
+        </Hero>
+      </header>
+    );
+  };
+}
 
 export default Header;

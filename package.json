@@ -6,6 +6,8 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@rmwc/button": "4.0.6",
+    "@rmwc/dialog": "4.0.6",
+    "@rmwc/elevation": "4.0.6",
     "@rmwc/grid": "4.0.6",
     "@rmwc/grid-list": "4.0.6",
     "@rmwc/icon-button": "4.0.6",
@@ -14,6 +16,7 @@
     "@rmwc/top-app-bar": "4.0.6",
     "@rmwc/typography": "4.0.6",
     "babel-plugin-styled-components": "1.10.0",
+    "delay": "4.1.0",
     "fontfaceobserver": "2.1.0",
     "gatsby": "^2.0.76",
     "gatsby-image": "^2.0.20",
@@ -33,12 +36,11 @@
     "react-headroom": "2.2.4",
     "react-helmet": "^5.2.0",
     "react-scroll": "1.7.10",
+    "react-spring": "7.2.8",
     "simple-icons": "1.9.17",
     "styled-components": "4.1.3",
-    "typeface-aleo": "0.0.69",
     "typeface-open-sans": "0.0.54",
-    "typeface-roboto": "0.0.54",
-    "typeface-walter-turncoat": "0.0.54"
+    "typeface-roboto": "0.0.54"
   },
   "keywords": [
     "gatsby"
