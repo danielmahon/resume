@@ -162,7 +162,7 @@ const IndexPage = () => (
                   </GridTilePrimaryContent>
                 </GridTilePrimary>
                 <GridTileSecondary>
-                  <GridTileIcon icon="info" />
+                  {/* <GridTileIcon icon="info" /> */}
                   <GridTileTitle>Project {i + 1}</GridTileTitle>
                 </GridTileSecondary>
               </Link>

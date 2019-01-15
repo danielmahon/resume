@@ -11,8 +11,6 @@ import SEO from './seo';
 import 'normalize.css';
 import 'typeface-roboto';
 import 'typeface-open-sans';
-import 'material-icons/css/material-icons.css';
-import 'material-icons/iconfont/material-icons.css';
 import '@material/layout-grid/dist/mdc.layout-grid.css';
 import '@material/top-app-bar/dist/mdc.top-app-bar.css';
 import '@material/button/dist/mdc.button.css';
@@ -52,11 +50,12 @@ class Layout extends PureComponent {
         `}
         render={data => (
           <div className={ready ? 'root fonts-loaded' : 'root fonts-loading'}>
-            <SEO
-              bodyAttributes={{
-                class: 'mdc-typography',
-              }}
-            />
+            <SEO bodyAttributes={{ class: 'mdc-typography' }}>
+              <link
+                href="https://fonts.googleapis.com/icon?family=Material+Icons"
+                rel="stylesheet"
+              />
+            </SEO>
             {!secondary && <Header ready={ready} />}
             <main>{children}</main>
             <Footer />

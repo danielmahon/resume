@@ -23,6 +23,7 @@ const SEO = ({
   title,
   bodyAttributes,
   exact,
+  children,
 }) => {
   return (
     <StaticQuery
@@ -82,8 +83,9 @@ const SEO = ({
                     }
                   : []
               )
-              .concat(meta)}
-          />
+              .concat(meta)}>
+            {children}
+          </Helmet>
         );
       }}
     />

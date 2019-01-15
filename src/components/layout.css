@@ -4,6 +4,7 @@
 body {
   background-color: black;
 }
+
 hr {
   border: 0;
   border-top: 1px solid rgba(208, 208, 208, 1);
@@ -13,8 +14,8 @@ hr {
   color: var(--mdc-theme-primary);
 }
 .root {
-  transition: opacity 1s ease;
   background-color: white;
+  transition: opacity 1s ease;
 }
 .fonts-loading {
   opacity: 0;
