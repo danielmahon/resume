@@ -90,36 +90,67 @@ const SecondPage = () => (
           Solution
         </Typography>
         <Typography use="body1" tag="p">
-          Excepteur sunt ea incididunt nulla nostrud eiusmod minim culpa veniam
-          duis mollit laborum id. Nostrud deserunt laborum laborum sint nulla id
-          elit enim mollit consectetur voluptate ullamco aliqua. Reprehenderit
-          enim anim sunt ipsum sunt consectetur laborum qui incididunt nulla
-          non. Occaecat excepteur officia officia incididunt sit commodo elit
-          qui proident ut dolor eiusmod. Fugiat eu veniam laborum mollit in
-          consectetur eu pariatur dolor ut incididunt id ad consectetur. Dolor
-          est amet aliquip cillum eiusmod deserunt nulla ipsum. Eu incididunt
-          laborum do proident deserunt.
+          Details coming soon...
         </Typography>
         {/* <Link to="/">Go back to the homepage</Link> */}
       </GridCell>
       <GridCell span={2} />
       <GridCell span={4}>
-        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/IMG_0415.jpg`} />
       </GridCell>
       <GridCell span={4}>
         <ProjectImage src={`projects/one/_DSC9028.jpg`} />
       </GridCell>
       <GridCell span={4}>
-        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/DSC_5042.jpg`} />
       </GridCell>
       <GridCell span={4}>
-        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/DSC_4994.jpg`} />
       </GridCell>
       <GridCell span={4}>
-        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/DSC_5029.jpg`} />
       </GridCell>
       <GridCell span={4}>
-        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/DSC_5011.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/DSC_5002.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/DSC_4989.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/DSC_4976.jpg`} />
+      </GridCell>
+      <GridCell span={6}>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/QSgAxLhrHL8"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      </GridCell>
+      <GridCell span={6}>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/gtKYLsYmGqc"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      </GridCell>
+      <GridCell span={6}>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/gtKYLsYmGqc"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
       </GridCell>
       <GridCell span={12}>
         <Button onClick={() => navigate('/#work')}>
