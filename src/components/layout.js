@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import FontFaceObserver from 'fontfaceobserver';
+import { ThemeProvider } from '@rmwc/theme';
 
 import Header from './header';
 import Footer from './footer';
@@ -25,6 +26,11 @@ import '@material/elevation/dist/mdc.elevation.css';
 // Import custom styles
 import './layout.css';
 
+const options = {
+  primary: 'rgba(56, 139, 154, 1.00)',
+  secondary: 'rgba(200, 111, 133, 1.00)',
+};
+
 class Layout extends PureComponent {
   state = { ready: false };
   componentDidMount = () => {
@@ -38,19 +44,20 @@ class Layout extends PureComponent {
     const { ready } = this.state;
     const { children, secondary } = this.props;
     return (
-      <div className={ready ? 'root fonts-loaded' : 'root fonts-loading'}>
+      <ThemeProvider
+        id="theme"
+        className={ready ? 'fonts-loaded' : ''}
+        options={options}>
         <SEO bodyAttributes={{ class: 'mdc-typography' }}>
           <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
           />
         </SEO>
-        <Fragment>
-          {!secondary && <Header ready={ready} />}
-          <main>{children}</main>
-          <Footer />
-        </Fragment>
-      </div>
+        {!secondary && <Header ready={ready} />}
+        <main>{children}</main>
+        <Footer />
+      </ThemeProvider>
     );
   };
 }

@@ -99,16 +99,17 @@ const TitleAnimation = Keyframes.Trail({
     display: 'inline-block',
     transform: 'scale(0.75)',
   },
-  show: async (next, cancel, { onRest }) => {
+  show: async (next, cancel, { onFinish }) => {
     await delay(500);
     await next({
       opacity: 1,
       transform: 'scale(1)',
     });
     await delay(1000);
-    onRest();
+    onFinish();
   },
 });
+
 const SubtitleAnimation = Keyframes.Spring({
   hide: { opacity: 0 },
   show: async next => {
@@ -163,8 +164,8 @@ class Header extends PureComponent {
           <Sky />
           <Typography use="headline1" theme="textPrimaryOnDark">
             <TitleAnimation
+              onFinish={() => this.setState({ step: step + 1 })}
               native
-              onRest={() => this.setState({ step: step + 1 })}
               items={items}
               keys={items.map((item, index) => index)}
               state={ready ? 'show' : 'hide'}>

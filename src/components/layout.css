@@ -13,13 +13,12 @@ hr {
 .mdc-typography--overline {
   color: var(--mdc-theme-primary);
 }
-.root {
+#theme {
   background-color: white;
   transition: opacity 1s ease;
-}
-.fonts-loading {
   opacity: 0;
 }
-.fonts-loaded {
+
+#theme.fonts-loaded {
   opacity: 1;
 }

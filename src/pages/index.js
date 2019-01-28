@@ -77,9 +77,8 @@ const IndexPage = () => (
             My name is Daniel, and to put it simply, I love making things look
             nice and do stuff. I have worked in the creative industry for most
             of my life and have had the privilege to learn and experience many
-            creative disciplines. I enjoy working solo but especially relish the
-            opportunity to work alongside other talented team members on unique
-            and impactful projects.
+            creative disciplines. I enjoy working solo or alongside other
+            talented team members on unique and impactful projects.
             <br />
             <br />
             Having been part of a family advertising agency for close to 20
