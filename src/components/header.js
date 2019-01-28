@@ -68,6 +68,9 @@ const Hero = styled.div`
     font-weight: 700;
     margin: 0 2rem;
     z-index: 1;
+    span {
+      min-width: 1rem;
+    }
   }
   .mdc-typography--body1 {
     margin: 1rem 20%;
@@ -91,7 +94,8 @@ const Icons = styled.div`
   color: white;
 `;
 
-const items = Array.from(`I'm Daniel Mahon.`.replace(/ /g, '\u00a0'));
+// const items = Array.from(`I'm Daniel Mahon.`.replace(/ /g, '\u00a0'));
+const items = Array.from(`I'm Daniel Mahon.`);
 
 const TitleAnimation = Keyframes.Trail({
   hide: {
@@ -165,13 +169,23 @@ class Header extends PureComponent {
           <Typography use="headline1" theme="textPrimaryOnDark">
             <TitleAnimation
               onFinish={() => this.setState({ step: step + 1 })}
-              native
               items={items}
               keys={items.map((item, index) => index)}
               state={ready ? 'show' : 'hide'}>
-              {item => props => (
-                <animated.span style={props}>{item}</animated.span>
-              )}
+              {item => props => {
+                return (
+                  <animated.span
+                    style={{
+                      ...props,
+                      display:
+                        item === ' ' && window.innerWidth < 900
+                          ? 'block'
+                          : 'inline-block',
+                    }}>
+                    {item}
+                  </animated.span>
+                );
+              }}
             </TitleAnimation>
           </Typography>
           <SubtitleAnimation
@@ -241,6 +255,14 @@ class Header extends PureComponent {
                     aria-label="Follow me on Instagram!"
                   />
                 </Icons>
+                {window.innerHeight < 896 && (
+                  <IconButton
+                    onClick={() => scroller.scrollTo('about', { smooth: true })}
+                    theme="onPrimary"
+                    style={{ ...props, position: 'absolute', bottom: '1rem' }}
+                    icon="arrow_downward"
+                  />
+                )}
               </>
             )}
           </SubtitleAnimation>

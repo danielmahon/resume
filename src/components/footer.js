@@ -1,4 +1,4 @@
-// import { Link } from 'gatsby';
+import { withPrefix } from 'gatsby';
 // import PropTypes from 'prop-types';
 import React from 'react';
 import { Grid, GridCell } from '@rmwc/grid';
@@ -18,8 +18,20 @@ const Footer = () => (
           Thank you for your consideration!
         </Typography>
         <Typography use="body1" tag="p">
-          <Button outlined tag="a" href="mailto:dan@mahonstudios.com">
+          <Button
+            style={{ margin: '0 0.5rem' }}
+            outlined
+            tag="a"
+            href="mailto:dan@mahonstudios.com">
             Email Me
+          </Button>
+          <Button
+            outlined
+            tag="a"
+            target="__blank"
+            style={{ margin: '0 0.5rem' }}
+            href={withPrefix('daniel-mahons-resume.pdf')}>
+            Download my Resumé
           </Button>
         </Typography>
       </GridCell>

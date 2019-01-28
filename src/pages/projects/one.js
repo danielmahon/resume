@@ -30,7 +30,7 @@ const Subtitle = styled(Typography).attrs({
 
 const SecondPage = () => (
   <Layout secondary>
-    <SEO title="Page two" />
+    <SEO title="HydroChemPSC Technology Trailer" />
     <Grid>
       <GridCell span={12} style={{ textAlign: 'center' }}>
         <HeroImage>
@@ -104,22 +104,22 @@ const SecondPage = () => (
       </GridCell>
       <GridCell span={2} />
       <GridCell span={4}>
-        <Image src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
       </GridCell>
       <GridCell span={4}>
-        <Image src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
       </GridCell>
       <GridCell span={4}>
-        <Image src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
       </GridCell>
       <GridCell span={4}>
-        <Image src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
       </GridCell>
       <GridCell span={4}>
-        <Image src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
       </GridCell>
       <GridCell span={4}>
-        <Image src={`projects/one/_DSC9028.jpg`} />
+        <ProjectImage src={`projects/one/_DSC9028.jpg`} />
       </GridCell>
       <GridCell span={12}>
         <Button onClick={() => navigate('/#work')}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, withPrefix } from 'gatsby';
 import { Grid, GridCell, GridInner } from '@rmwc/grid';
 import { Typography } from '@rmwc/typography';
 import { Button } from '@rmwc/button';
@@ -16,7 +16,7 @@ import {
 import { Element } from 'react-scroll';
 
 import Layout from '../components/layout';
-import { Image } from '../components/image';
+import { Image, ProjectImage } from '../components/image';
 import SEO from '../components/seo';
 import Skills from '../components/skills';
 
@@ -37,9 +37,9 @@ const AboutWrapper = styled.div`
 const Avatar = styled.div`
   display: inline-block;
   .gatsby-image-wrapper {
-    border-radius: 100px;
-    height: 200px;
-    width: 200px;
+    border-radius: calc(256px / 2);
+    height: 256px;
+    width: 256px;
   }
 `;
 const StyledGridTile = styled(GridTile)`
@@ -74,31 +74,54 @@ const IndexPage = () => (
             About Me
           </Typography>
           <Typography use="body1" tag="p">
-            My name is Daniel, and to put it simply, I love making things look
-            nice and do stuff. I have worked in the creative industry for most
-            of my life and have had the privilege to learn and experience many
-            creative disciplines. I enjoy working solo or alongside other
-            talented team members on unique and impactful projects.
+            My name is Daniel, and simply put, I love to make things look nice
+            and do stuff. I have worked in the creative industry for most of my
+            life and have had the privilege to learn and experience many
+            creative disciplines. I enjoy working solo as well as alongside
+            other talented team members on unique and impactful projects.
             <br />
             <br />
-            Having been part of a family advertising agency for close to 20
-            years, I have had more than a variety of roles and responsibilities.
+            Having been part of a family creative agency for close to 20 years,
+            I have had more than a variety of roles and responsibilities.
             Starting as a teenager, I developed and enlarged negatives in a
             darkroom, eventually learning commercial photography and
             videography. Along with this came some experience in set design and
-            fabrication. I was also asked to work on print campaigns which lead
-            to a broader interest in design, digital media, and motion graphics.
-            After designing hundreds of marketing materials, campaigns, and
-            websites, I found myself interested in interactive design and
-            started into software and web development. This lead to learning
-            Coldfusion, Javascript, HTML, CSS, Flash, Appcelerator Titanium,
-            DevOps, etc. Lately, utilizing NodeJS, the Javascript "full-stack"
-            environment, along with frameworks like ReactJS for creating
+            fabrication. I was eventually asked to work on print campaigns which
+            lead to a broader interest in design, digital media, and motion
+            graphics. After designing hundreds of marketing materials,
+            campaigns, and websites, I found myself interested in interactive
+            design and started into software and web development. This lead to
+            learning Coldfusion, Javascript, HTML, CSS, Flash, Appcelerator
+            Titanium, DevOps, etc. Lately, I've been utilizing NodeJS, the
+            Javascript "full-stack" environment, along with UI frameworks like
+            Facebook's ReactJS and Google's Material Design to create
             interactive applications for any device (web, mobile, desktop,
             embedded).
             <br />
+            <br />I have many hobbies as well, some which nicely complement my
+            professional career. Such as woodworking, model making, sculpture,
+            drawing, 3D printing, tinkering with embedded systems (Arduino,
+            RaspberryPi, etc.) to create interactive Halloween decorations and
+            smart-home devices, and reverse engineering parts of
+            Disney/Universal attractions to name a few. I'm also an active
+            soccer player, hiker, and traveler.
             <br />
-            [future]
+            <br />
+            To be able to enjoy so many disciplines and hobbies, there is one
+            thing you must enjoy... learning. I am very proud that even though I
+            have learned a great deal from many talented people, I am also very
+            good at teaching myself. I enjoy the challenge of learning new
+            skills, especially when that knowledge allows me to work on more
+            unique projects.
+            <br />
+            <br />
+            Today, I am looking to take the next step in my career and join a
+            team that focuses on creating educational and impactful interactive
+            projects. If you have a project or a team where you think I would be
+            a good fit, please feel free to contact me.
+            <br />
+            <br />
+            Thank you.
           </Typography>
 
           <Typography
@@ -131,7 +154,11 @@ const IndexPage = () => (
             <GridCell
               span={6}
               style={{ textAlign: 'center', padding: '1rem 0 2rem 0' }}>
-              <Button raised onClick={() => window.alert('download resume')}>
+              <Button
+                raised
+                tag="a"
+                target="__blank"
+                href={withPrefix('daniel-mahons-resume.pdf')}>
                 Download my Resumé
               </Button>
               <br />
@@ -141,7 +168,6 @@ const IndexPage = () => (
               </Button>
             </GridCell>
           </GridInner>
-          {/* <Link to="/page-2/">Go to page 2</Link> */}
         </GridCell>
       </About>
     </AboutWrapper>
@@ -149,22 +175,43 @@ const IndexPage = () => (
     <Grid>
       <GridCell span={12}>
         <GridList tileAspect="4x3">
-          {[0, 1, 2, 3, 4, 5].map((val, i) => (
+          <StyledGridTile>
+            <Link to="/projects/one">
+              <GridTilePrimary>
+                <GridTilePrimaryContent>
+                  <Image src="projects/one/DSC_5056.jpg" />
+                </GridTilePrimaryContent>
+              </GridTilePrimary>
+              <GridTileSecondary
+                style={{
+                  padding: '0 1rem',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                }}>
+                {/* <GridTileIcon icon="info" /> */}
+                <GridTileTitle style={{ lineHeight: '48px' }}>
+                  Project: Technology Trailer
+                </GridTileTitle>
+                <GridTileTitle style={{ lineHeight: '48px' }}>
+                  <Button
+                    style={{ borderColor: 'white', lineHeight: '1rem' }}
+                    outlined
+                    dense
+                    theme="onPrimary">
+                    Learn more
+                  </Button>
+                </GridTileTitle>
+              </GridTileSecondary>
+            </Link>
+          </StyledGridTile>
+          {[0, 1].map((val, i) => (
             <StyledGridTile key={i}>
-              <Link to="/projects/one">
-                <GridTilePrimary>
-                  <GridTilePrimaryContent>
-                    <img
-                      src={`https://source.unsplash.com/random`}
-                      alt="test"
-                    />
-                  </GridTilePrimaryContent>
-                </GridTilePrimary>
-                <GridTileSecondary>
-                  {/* <GridTileIcon icon="info" /> */}
-                  <GridTileTitle>Project {i + 1}</GridTileTitle>
-                </GridTileSecondary>
-              </Link>
+              <GridTilePrimary
+                style={{ backgroundColor: 'rgba(241, 231, 211, 1.00)' }}
+              />
+              <GridTileSecondary>
+                <GridTileTitle>Project review coming soon...</GridTileTitle>
+              </GridTileSecondary>
             </StyledGridTile>
           ))}
         </GridList>
@@ -220,12 +267,12 @@ const IndexPage = () => (
             <li>Copywriting</li>
           </ul>
         </Typography>
-        <Typography use="body1" tag="p">
+        {/* <Typography use="body1" tag="p">
           <Typography use="overline" tag="span" style={{ display: 'block' }}>
             Awards
           </Typography>
           Lorem ipsum dolor...
-        </Typography>
+        </Typography> */}
         <hr />
         {/* Job */}
         <Typography use="headline5" tag="p">
