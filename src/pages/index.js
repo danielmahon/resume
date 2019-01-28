@@ -175,7 +175,7 @@ const IndexPage = () => (
     <Grid>
       <GridCell span={12}>
         <GridList tileAspect="4x3">
-          <StyledGridTile>
+          {/* <StyledGridTile>
             <Link to="/projects/one">
               <GridTilePrimary>
                 <GridTilePrimaryContent>
@@ -188,7 +188,6 @@ const IndexPage = () => (
                   display: 'flex',
                   justifyContent: 'space-between',
                 }}>
-                {/* <GridTileIcon icon="info" /> */}
                 <GridTileTitle style={{ lineHeight: '48px' }}>
                   Project: Technology Trailer
                 </GridTileTitle>
@@ -203,8 +202,8 @@ const IndexPage = () => (
                 </GridTileTitle>
               </GridTileSecondary>
             </Link>
-          </StyledGridTile>
-          {[0, 1].map((val, i) => (
+          </StyledGridTile> */}
+          {[0, 1, 2].map((val, i) => (
             <StyledGridTile key={i}>
               <GridTilePrimary
                 style={{ backgroundColor: 'rgba(241, 231, 211, 1.00)' }}
