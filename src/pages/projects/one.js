@@ -188,6 +188,16 @@ const SecondPage = () => (
           />
         </div>
       </GridCell>
+      <GridCell span={6}>
+        <div class="embed-container">
+          <iframe
+            title="High Pressure Demo"
+            src="https://www.youtube.com/embed/XsM13dck0cA"
+            frameborder="0"
+            allowfullscreen
+          />
+        </div>
+      </GridCell>
       <GridCell span={12}>
         <Button onClick={() => navigate('/#work')}>
           <ButtonIcon icon="arrow_back" />
