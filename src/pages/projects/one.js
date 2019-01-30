@@ -122,35 +122,71 @@ const SecondPage = () => (
       <GridCell span={4}>
         <ProjectImage src={`projects/one/DSC_4976.jpg`} />
       </GridCell>
-      <GridCell span={6}>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/QSgAxLhrHL8"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        />
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/_DSC0101.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/_DSC0107.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/_DSC0111.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/concept-2.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/concept-1.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/IMG_6150.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/panel-concept.png`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/image002.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/image003.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/image004.png`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/image005.jpg`} />
+      </GridCell>
+      <GridCell span={4}>
+        <ProjectImage src={`projects/one/image006.jpg`} />
       </GridCell>
       <GridCell span={6}>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/gtKYLsYmGqc"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        />
+        <div class="embed-container">
+          <iframe
+            title="Interactive Map"
+            src="https://www.youtube.com/embed/QSgAxLhrHL8"
+            frameborder="0"
+            allowfullscreen
+          />
+        </div>
       </GridCell>
       <GridCell span={6}>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/utmskwy-XHI"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        />
+        <div class="embed-container">
+          <iframe
+            title="Simulation"
+            src="https://www.youtube.com/embed/gtKYLsYmGqc"
+            frameborder="0"
+            allowfullscreen
+          />
+        </div>
+      </GridCell>
+      <GridCell span={6}>
+        <div class="embed-container">
+          <iframe
+            title="Capacitive Buttons"
+            src="https://www.youtube.com/embed/utmskwy-XHI"
+            frameborder="0"
+            allowfullscreen
+          />
+        </div>
       </GridCell>
       <GridCell span={12}>
         <Button onClick={() => navigate('/#work')}>
