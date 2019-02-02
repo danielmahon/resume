@@ -25,6 +25,7 @@ import '@material/elevation/dist/mdc.elevation.css';
 
 // Import custom styles
 import './layout.css';
+import favicon from '../images/favicon.ico';
 
 const options = {
   primary: 'rgba(56, 139, 154, 1.00)',
@@ -53,6 +54,7 @@ class Layout extends PureComponent {
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
           />
+          <link rel="icon" href={favicon} type="image/x-icon" />
         </SEO>
         {!secondary && <Header ready={ready} />}
         <main>{children}</main>
