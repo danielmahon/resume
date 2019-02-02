@@ -71,7 +71,7 @@ const IndexPage = () => (
         </GridCell>
         <GridCell span={7}>
           <Typography use="headline4" tag="div">
-            About Me
+            My Story
           </Typography>
           <Typography use="body1" tag="p">
             My name is Daniel, and simply put, I love to make things look nice
