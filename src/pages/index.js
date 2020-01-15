@@ -171,6 +171,17 @@ const IndexPage = () => (
         </GridCell>
       </About>
     </AboutWrapper>
+    <Element name="skills" />
+    <Grid>
+      <GridCell span={4} style={{ textAlign: 'center' }}>
+        <Typography use="headline4" tag="p">
+          SKILLS
+        </Typography>
+      </GridCell>
+      <GridCell span={8}>
+        <Skills />
+      </GridCell>
+    </Grid>
     <Element name="work" />
     <Grid>
       <GridCell span={12}>
@@ -347,17 +358,6 @@ const IndexPage = () => (
           </Typography>
           Convio Innovator Award 2009
         </Typography>
-      </GridCell>
-    </Grid>
-    <Element name="skills" />
-    <Grid>
-      <GridCell span={4} style={{ textAlign: 'center' }}>
-        <Typography use="headline4" tag="p">
-          SKILLS
-        </Typography>
-      </GridCell>
-      <GridCell span={8}>
-        <Skills />
       </GridCell>
     </Grid>
     <Element name="education" />
