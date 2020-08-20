@@ -21,13 +21,13 @@ const Footer = () => (
           <Button
             style={{ margin: '0 0.5rem' }}
             outlined
-            tag="a"
+            as="a"
             href="mailto:dan@mahonstudios.com">
             Email Me
           </Button>
           <Button
             outlined
-            tag="a"
+            as="a"
             target="__blank"
             style={{ margin: '0 0.5rem' }}
             href={withPrefix('daniel-mahons-resume.pdf')}>

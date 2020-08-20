@@ -7,11 +7,15 @@ import {
   ImageListImage,
   ImageListSupporting,
   ImageListLabel,
+  ImageListItemProps,
 } from '@rmwc/image-list';
 import styled from 'styled-components';
 import { startCase } from 'lodash';
+import { HTMLProps } from '@rmwc/types';
 
-const ImageListItemStyled = styled(ImageListItem)`
+const ImageListItemStyled = styled(ImageListItem)<
+  ImageListItemProps & HTMLProps
+>`
   margin: 2rem;
   width: calc(100% / 2 - 4rem);
   @media screen and (min-width: 640px) {
@@ -21,6 +25,7 @@ const ImageListItemStyled = styled(ImageListItem)`
     width: calc(100% / 4 - 4rem);
   }
 `;
+
 const ImageListLabelStyled = styled(ImageListLabel)`
   &&& {
     text-align: center;
@@ -50,7 +55,7 @@ const Skills = ({ path }) => (
         }
       }
     `}
-    render={data => {
+    render={(data) => {
       return (
         <ImageList>
           {data.images.edges.map(({ node }) => {

@@ -71,6 +71,7 @@
   width: 100%;
   height: 100%;
   display: block;
+  z-index: 0;
 }
 .twinkling,
 .clouds {
@@ -82,6 +83,7 @@
   width: 100%;
   height: 100%;
   display: block;
+  z-index: 0;
 }
 .background {
   background: #000 url(/images/background.jpg?v=4444) repeat-x bottom center;

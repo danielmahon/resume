@@ -1,24 +1,23 @@
 import React from 'react';
 import { Link, withPrefix } from 'gatsby';
-import { Grid, GridCell, GridInner } from '@rmwc/grid';
+import { Grid, GridCell, GridRow } from '@rmwc/grid';
 import { Typography } from '@rmwc/typography';
 import { Button } from '@rmwc/button';
 import styled from 'styled-components';
 import {
   GridList,
   GridTile,
-  GridTileIcon,
   GridTilePrimary,
-  GridTilePrimaryContent,
   GridTileSecondary,
   GridTileTitle,
 } from '@rmwc/grid-list';
 import { Element } from 'react-scroll';
 
 import Layout from '../components/layout';
-import { Image, ProjectImage } from '../components/image';
+import { Image } from '../components/image';
 import SEO from '../components/seo';
 import Skills from '../components/skills';
+import { TechCloud } from '../components/tech-cloud';
 
 const About = styled(Grid)`
   color: white;
@@ -52,7 +51,7 @@ const StyledGridTile = styled(GridTile)`
       width: calc(33% - 2px);
     }
   }
-`;
+` as typeof GridTile;
 
 const IndexPage = () => (
   <Layout>
@@ -81,44 +80,47 @@ const IndexPage = () => (
             other talented team members on unique and impactful projects.
             <br />
             <br />
-            Having been part of a family creative agency for close to 20 years,
-            I have had more than a variety of roles and responsibilities.
-            Starting as a teenager, I developed and enlarged negatives in a
-            darkroom, eventually learning commercial photography and
-            videography. Along with this came some experience in set design and
-            fabrication. I was eventually asked to work on print campaigns which
-            lead to a broader interest in design, digital media, and motion
-            graphics. After designing hundreds of marketing materials,
-            campaigns, and websites, I found myself interested in interactive
-            design and started into software and web development. This lead to
-            learning Coldfusion, Javascript, HTML, CSS, Flash, Appcelerator
-            Titanium, DevOps, etc. Lately, I've been utilizing NodeJS, the
-            Javascript "full-stack" environment, along with UI frameworks like
-            Facebook's ReactJS and Google's Material Design to create
-            interactive applications for any device (web, mobile, desktop,
-            embedded).
+            Having been part of a family creative agency for over 20 years, I
+            have had more than a variety of roles and responsibilities. Starting
+            as a teenager, I developed and enlarged negatives in a darkroom,
+            eventually learning commercial photography and videography. Along
+            with this came some experience in set design and fabrication. I was
+            eventually asked to work on print campaigns which lead to a broader
+            interest in design, digital media, and motion graphics. After
+            designing hundreds of marketing materials, campaigns, and websites,
+            I found myself interested in interactive design and started into
+            software and web development. This lead to learning Coldfusion,
+            Javascript, HTML, CSS, Flash, Appcelerator Titanium, DevOps, etc.
+            Lately, I've been utilizing NodeJS and Dart, along with UI
+            frameworks like Facebook's ReactJS and Google's Flutter to create
+            interactive applications across a wide range of devices (web,
+            mobile, desktop, embedded/IoT).
             <br />
             <br />I have many hobbies as well, some which nicely complement my
             professional career. Such as woodworking, model making, sculpture,
-            drawing, 3D printing, tinkering with embedded systems (Arduino,
-            RaspberryPi, etc.) to create interactive Halloween decorations and
-            smart-home devices, and reverse engineering parts of
-            Disney/Universal attractions to name a few. I'm also an active
-            soccer player, hiker, and traveler.
+            drawing, 3D printing, and tinkering with embedded systems (Arduino,
+            RaspberryPi, etc.). I create interactive Halloween decorations,
+            smart-home devices, and even reverse engineer parts of
+            Disney/Universal attractions. I'm also an active soccer player,
+            hiker, and traveler.
             <br />
             <br />
             To be able to enjoy so many disciplines and hobbies, there is one
             thing you must enjoy... learning. I am very proud that even though I
-            have learned a great deal from many talented people, I am also very
-            good at teaching myself. I enjoy the challenge of learning new
-            skills, especially when that knowledge allows me to work on more
-            unique projects.
+            have learned a great deal from many talented people and
+            institutions, I am also very good at teaching myself. I enjoy the
+            challenge of learning new skills, especially when that knowledge
+            allows me to work on more challenging projects. My favorite
+            challenges are those which require combining a variety of
+            technologies from the physical and digital realms to form unique
+            experiences.
             <br />
             <br />
             Today, I am looking to take the next step in my career and join a
             team that focuses on creating educational and impactful interactive
-            projects. If you have a project or a team where you think I would be
-            a good fit, please feel free to contact me.
+            projects with positive influences. If you have a project or a team
+            where you think I would be a good fit, please feel free to contact
+            me.
             <br />
             <br />
             Thank you.
@@ -137,7 +139,7 @@ const IndexPage = () => (
             Contact Details
           </Typography>
 
-          <GridInner>
+          <GridRow>
             <GridCell span={6}>
               <Typography use="body1" tag="p">
                 Daniel Mahon
@@ -163,11 +165,16 @@ const IndexPage = () => (
               </Button>
               <br />
               <br />
-              <Button outlined tag="a" href="mailto:dan@mahonstudios.com">
+              <Button
+                outlined
+                tag="a"
+                target="_blank"
+                style={{ borderColor: 'rgba(255, 255, 255, 0.25)' }}
+                href="mailto:dan@mahonstudios.com">
                 Email Me
               </Button>
             </GridCell>
-          </GridInner>
+          </GridRow>
         </GridCell>
       </About>
     </AboutWrapper>
@@ -178,9 +185,9 @@ const IndexPage = () => (
           <StyledGridTile>
             <Link to="/projects/one">
               <GridTilePrimary>
-                <GridTilePrimaryContent>
-                  <Image src="projects/one/DSC_5056.jpg" />
-                </GridTilePrimaryContent>
+                {/* <GridTilePrimaryContent> */}
+                <Image src="projects/one/DSC_5056.jpg" />
+                {/* </GridTilePrimaryContent> */}
               </GridTilePrimary>
               <GridTileSecondary
                 style={{
@@ -230,6 +237,16 @@ const IndexPage = () => (
     <Grid>
       <GridCell span={4} style={{ textAlign: 'center' }}>
         <Typography use="headline4" tag="p">
+          TECH
+        </Typography>
+      </GridCell>
+      <GridCell span={8}>
+        <TechCloud />
+      </GridCell>
+    </Grid>
+    <Grid>
+      <GridCell span={4} style={{ textAlign: 'center' }}>
+        <Typography use="headline4" tag="p">
           WORK
         </Typography>
       </GridCell>
@@ -239,18 +256,17 @@ const IndexPage = () => (
           Mahon Studios
         </Typography>
         <Typography use="body1" tag="i">
-          Owner / President • 2011 - Current
+          Owner / President • 2011 - Current (OH)
           <br />
-          Designer / Developer / Photographer • 1999 - 2006
+          Designer / Developer / Photographer • 1999 - 2006 (OH)
         </Typography>
         <Typography use="body1" tag="p">
           <Button
             dense
             outlined
-            tag="a"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.mahonstudios.com">
+            onClick={() =>
+              window.open('https://www.mahonstudios.com', '_blank')
+            }>
             mahonstudios.com
           </Button>
         </Typography>
@@ -275,6 +291,7 @@ const IndexPage = () => (
             <li>Print & Outdoor Media Design</li>
             <li>Illustration</li>
             <li>Copywriting</li>
+            <li>Small team management</li>
           </ul>
         </Typography>
         {/* <Typography use="body1" tag="p">
@@ -289,7 +306,7 @@ const IndexPage = () => (
           Prompter Communications
         </Typography>
         <Typography use="body1" tag="i">
-          Partner / Developer / Designer • 2011 - 2016
+          Partner / Developer / Designer • 2011 - 2016 (OH)
         </Typography>
         <Typography use="body1" tag="p">
           BarPrompter is an integrated marketing approach to building patron
@@ -316,18 +333,15 @@ const IndexPage = () => (
           Jewish National Fund
         </Typography>
         <Typography use="body1" tag="i">
-          Creative Director • 2009 - 2011
+          Creative Director • 2009 - 2011 (NYC)
           <br />
-          Graphic Designer / Interactive Developer • 2006 - 2009
+          Graphic Designer / Interactive Developer • 2006 - 2009 (NYC)
         </Typography>
         <Typography use="body1" tag="p">
           <Button
             dense
             outlined
-            tag="a"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.jnf.org">
+            onClick={() => window.open('https://www.jnf.org', '_blank')}>
             jnf.org
           </Button>
         </Typography>
@@ -349,6 +363,7 @@ const IndexPage = () => (
           <ul>
             <li>Art Direction</li>
             <li>Graphic Design</li>
+            <li>Managed small team of designers & developers</li>
             <li>Mobile, Desktop, and Web Application Development</li>
           </ul>
         </Typography>

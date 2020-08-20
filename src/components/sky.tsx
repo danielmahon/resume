@@ -11,8 +11,4 @@ const Sky = () => (
   </>
 );
 
-Sky.propTypes = {};
-
-Sky.defaultProps = {};
-
 export default Sky;

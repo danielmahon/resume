@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
 import { Grid, GridCell } from '@rmwc/grid';
-import { Button, ButtonIcon } from '@rmwc/button';
+import { Button } from '@rmwc/button';
 import { Typography } from '@rmwc/typography';
 import { ProjectImage, Image } from '../../components/image';
 
@@ -38,8 +38,7 @@ const SecondPage = () => (
         </HeroImage>
       </GridCell>
       <GridCell span={12}>
-        <Button onClick={() => navigate('/#work')}>
-          <ButtonIcon icon="arrow_back" />
+        <Button onClick={() => navigate('/#work')} icon="arrow_back">
           Back
         </Button>
         <Title>HydroChemPSC Technology Trailer</Title>
@@ -159,48 +158,47 @@ const SecondPage = () => (
         <ProjectImage src={`projects/one/image006.jpg`} />
       </GridCell>
       <GridCell span={6}>
-        <div class="embed-container">
+        <div className="embed-container">
           <iframe
             title="Interactive Map"
             src="https://www.youtube.com/embed/QSgAxLhrHL8"
-            frameborder="0"
-            allowfullscreen
+            frameBorder={0}
+            allowFullScreen
           />
         </div>
       </GridCell>
       <GridCell span={6}>
-        <div class="embed-container">
+        <div className="embed-container">
           <iframe
             title="Simulation"
             src="https://www.youtube.com/embed/gtKYLsYmGqc"
-            frameborder="0"
-            allowfullscreen
+            frameBorder={0}
+            allowFullScreen
           />
         </div>
       </GridCell>
       <GridCell span={6}>
-        <div class="embed-container">
+        <div className="embed-container">
           <iframe
             title="Capacitive Buttons"
             src="https://www.youtube.com/embed/utmskwy-XHI"
-            frameborder="0"
-            allowfullscreen
+            frameBorder={0}
+            allowFullScreen
           />
         </div>
       </GridCell>
       <GridCell span={6}>
-        <div class="embed-container">
+        <div className="embed-container">
           <iframe
             title="High Pressure Demo"
             src="https://www.youtube.com/embed/XsM13dck0cA"
-            frameborder="0"
-            allowfullscreen
+            frameBorder={0}
+            allowFullScreen
           />
         </div>
       </GridCell>
       <GridCell span={12}>
-        <Button onClick={() => navigate('/#work')}>
-          <ButtonIcon icon="arrow_back" />
+        <Button onClick={() => navigate('/#work')} icon="arrow_back">
           Back
         </Button>
       </GridCell>
