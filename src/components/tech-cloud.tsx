@@ -33,6 +33,7 @@ import {
   SiDigitalocean,
   SiCss3,
   SiHeroku,
+  SiNetlify,
 } from 'react-icons/si';
 import { BiPyramid } from 'react-icons/bi';
 
@@ -60,6 +61,7 @@ const tech: [string, string?, IconType?][] = [
   ['CSS3', 'https://developer.mozilla.org/en-US/docs/Web/CSS', SiCss3],
   ['Google Cloud', 'https://cloud.google.com/', SiGooglecloud],
   ['Firebase', 'https://firebase.google.com/', SiFirebase],
+  ['Netlify', 'https://www.netlify.com/', SiNetlify],
   ['AWS', 'https://aws.amazon.com/', SiAmazonaws],
   ['Heroku', 'https://www.heroku.com/home', SiHeroku],
   ['DigitalOcean', 'https://www.digitalocean.com/', SiDigitalocean],
