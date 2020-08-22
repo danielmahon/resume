@@ -45,8 +45,6 @@ const defaultBreakpoints = {
 export const useBreakpoints = (
   breakpoints = defaultBreakpoints
 ): UseBreakpointResult => {
-  const win = window ?? { innerWidth: 0 };
-
   const sortedBreakpoints = Object.entries(
     breakpoints
   ).sort(([_, a], [__, b]) => (a === b ? 0 : a > b ? 1 : -1));
@@ -60,20 +58,24 @@ export const useBreakpoints = (
   const [
     [currentBreakpoint, currentBreakpointSize],
     setCurrentBreakpoint,
-  ] = useState(getBreakPoint(win.innerWidth) || ['xsmall', 0]);
+  ] = useState(sortedBreakpoints[0]);
 
   useEffect(() => {
     //a handler which will be called on change of the screen resize
     const setSize = () => {
-      setCurrentBreakpoint(getBreakPoint(win.innerWidth) || ['xsmall', 0]);
+      setCurrentBreakpoint(
+        getBreakPoint(window.innerWidth) || sortedBreakpoints[0]
+      );
     };
 
+    setSize();
+
     //register the window resize listener
-    win.addEventListener('resize', setSize);
+    window.addEventListener('resize', setSize);
 
     //unregister the listerner on destroy of the hook
-    return () => win.removeEventListener('resize', setSize);
-  }, [setCurrentBreakpoint, getBreakPoint, win]);
+    return () => window.removeEventListener('resize', setSize);
+  }, [setCurrentBreakpoint, getBreakPoint, sortedBreakpoints]);
 
   const conditionals = transform<number, BreakpointConditionals>(
     breakpoints,
