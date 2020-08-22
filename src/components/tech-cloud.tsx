@@ -33,6 +33,7 @@ import {
   SiCss3,
   SiHeroku,
   SiNetlify,
+  SiGatsby,
 } from 'react-icons/si';
 import { BiPyramid } from 'react-icons/bi';
 import { Button } from '@rmwc/button';
@@ -43,6 +44,7 @@ const tech: [string, string?, IconType?][] = [
   ['NodeJS', 'https://nodejs.org/', SiNodeDotJs],
   ['Dart', 'https://dart.dev/', SiDart],
   ['ReactJS', 'https://reactjs.org/', SiReact],
+  ['GatsbyJS', 'https://www.gatsbyjs.com/', SiGatsby],
   ['Adobe Creative Cloud', 'https://www.adobe.com/creativecloud.html', SiAdobe],
   ['Material Design', 'https://material.io/', SiMaterialdesign],
   ['Unity', 'https://unity.com/', SiUnity],

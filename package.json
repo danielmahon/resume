@@ -41,6 +41,7 @@
     "react-icons": "3.11.0",
     "react-scroll": "1.8.1",
     "styled-components": "5.1.1",
+    "swiper": "6.1.2",
     "typeface-open-sans": "0.0.75",
     "typeface-roboto": "0.0.75",
     "typescript": "3.9.7"

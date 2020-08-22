@@ -14,6 +14,7 @@ import {
 import { Element } from 'react-scroll';
 
 import { Layout } from '../components/layout';
+import { Clients } from '../components/clients';
 import { Image } from '../components/image';
 import { SEO } from '../components/seo';
 import { Skills } from '../components/skills';
@@ -181,6 +182,11 @@ const IndexPage = () => (
       </About>
     </AboutWrapper>
     <Element name="work" />
+    <Grid>
+      <GridCell span={12}>
+        <Clients />
+      </GridCell>
+    </Grid>
     <Grid>
       <GridCell span={12}>
         <GridList tileAspect="4x3">
@@ -377,6 +383,7 @@ const IndexPage = () => (
         </Typography>
       </GridCell>
     </Grid>
+
     <Grid>
       <GridCell span={4} style={{ textAlign: 'center' }}>
         <Typography use="headline4" tag="p">
