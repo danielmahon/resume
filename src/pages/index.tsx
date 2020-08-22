@@ -13,11 +13,12 @@ import {
 } from '@rmwc/grid-list';
 import { Element } from 'react-scroll';
 
-import Layout from '../components/layout';
+import { Layout } from '../components/layout';
 import { Image } from '../components/image';
-import SEO from '../components/seo';
-import Skills from '../components/skills';
+import { SEO } from '../components/seo';
+import { Skills } from '../components/skills';
 import { TechCloud } from '../components/tech-cloud';
+import { SocialIcons } from '../components/social-icons';
 
 const About = styled(Grid)`
   color: white;
@@ -155,7 +156,7 @@ const IndexPage = () => (
             </GridCell>
             <GridCell
               span={6}
-              style={{ textAlign: 'center', padding: '1rem 0 2rem 0' }}>
+              style={{ textAlign: 'center', padding: '1rem 0 1rem 0' }}>
               <Button
                 raised
                 tag="a"
@@ -173,6 +174,7 @@ const IndexPage = () => (
                 href="mailto:dan@mahonstudios.com">
                 Email Me
               </Button>
+              <SocialIcons />
             </GridCell>
           </GridRow>
         </GridCell>

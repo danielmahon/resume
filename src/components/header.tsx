@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IconButton } from '@rmwc/icon-button';
 import { Button as RMWCButton, ButtonHTMLProps } from '@rmwc/button';
 import { Typography } from '@rmwc/typography';
@@ -6,15 +6,11 @@ import { TopAppBar, TopAppBarRow, TopAppBarSection } from '@rmwc/top-app-bar';
 import styled from 'styled-components';
 import Headroom from 'react-headroom';
 import { animateScroll, scroller } from 'react-scroll';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, useAnimation } from 'framer-motion';
 import Sky from './sky';
-import {
-  SiGithub,
-  SiFacebook,
-  SiLinkedin,
-  SiTwitter,
-  SiInstagram,
-} from 'react-icons/si';
+import delay from 'delay';
+import { SocialIcons } from './social-icons';
+import { useBreakpoints } from './hooks';
 
 const StyledHeadroom = styled(Headroom)`
   position: absolute;
@@ -34,13 +30,17 @@ const StyledHeadroom = styled(Headroom)`
     background-color: rgba(0, 0, 0, 0);
   }
   @media screen and (max-width: 599px) {
-    display: none;
+    .mdc-button:nth-child(1),
+    .mdc-button:nth-child(5) {
+      display: none;
+    }
   }
 `;
 
 const TopAppBarSectionCentered = styled(TopAppBarSection)`
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 8px;
 `;
 
@@ -84,26 +84,21 @@ const Hero = styled.div`
   }
 `;
 
-const Icons = styled.div`
-  color: white;
-`;
-
-const items = Array.from(`I'm Daniel Mahon.`);
-
 const Title = styled(motion.div)`
   font-family: 'Open Sans';
   font-size: 4rem;
   font-weight: 700;
   margin: 0 1rem;
   z-index: 1;
+  text-align: center;
   div {
     min-width: 1rem;
     display: inline-block;
+    position: relative;
   }
   @media screen and (max-width: 599px) {
     font-size: 2rem;
     line-height: 2rem;
-    text-align: center;
     div {
       min-width: 0.5rem;
     }
@@ -113,118 +108,132 @@ const Title = styled(motion.div)`
 const Subtitle = styled(motion.div)`
   z-index: 1;
   text-align: center;
+  opacity: 0;
   .mdc-typography--body1 {
     display: block;
     padding: 1rem 2rem;
   }
   .arrow-button {
-    margin: 2rem auto 0 auto;
+    margin: 1rem auto 0 auto;
   }
 `;
 
+enum TitleStates {
+  HIDDEN = 'HIDDEN',
+  SHOWN = 'SHOWN',
+}
+
 const titleVariants: Variants = {
-  hidden: {
+  [TitleStates.HIDDEN]: {
     opacity: 0,
-    transform: 'scale(0.75)',
+    y: -10,
   },
-  shown: {
+  [TitleStates.SHOWN]: {
     opacity: 1,
-    transform: 'scale(1)',
+    y: 0,
     transition: {
       staggerChildren: 0.1,
     },
   },
 };
 
-const Header = () => {
+export const Header = () => {
+  const headerControls = useAnimation();
+  const titleControls = useAnimation();
+  const subtitleControls = useAnimation();
+  const [title, setTitle] = useState(Array.from(`Hello there,`));
+  const { isXsmall } = useBreakpoints();
+
+  // console.log(breakpoint);
+  // console.log(size);
+  // console.log(isSmall);
+
+  useEffect(() => {
+    const sequence = async () => {
+      await delay(1000);
+      await titleControls.start(TitleStates.SHOWN);
+      await delay(500);
+      await titleControls.start(TitleStates.HIDDEN);
+      setTitle(Array.from(`I'm Daniel Mahon.`));
+      await titleControls.start(TitleStates.SHOWN);
+      await delay(500);
+      await subtitleControls.start({
+        opacity: 1,
+        transition: { duration: 1 },
+      });
+      await headerControls.start(TitleStates.SHOWN);
+    };
+    sequence();
+  }, [titleControls, subtitleControls, headerControls, setTitle]);
+
   return (
     <header>
       <StyledHeadroom>
         <TopAppBar>
           <TopAppBarRow>
-            <TopAppBarSectionCentered>
-              <Button onClick={() => animateScroll.scrollToTop()}>Home</Button>
-              <Button
-                onClick={() => scroller.scrollTo('about', { smooth: true })}>
-                About
-              </Button>
-              <Button
-                onClick={() => scroller.scrollTo('work', { smooth: true })}>
-                Work
-              </Button>
-              <Button
-                onClick={() => scroller.scrollTo('skills', { smooth: true })}>
-                Skills
-              </Button>
-              <Button
-                onClick={() =>
-                  scroller.scrollTo('education', { smooth: true })
-                }>
-                Education
-              </Button>
-              <Button
-                onClick={() => scroller.scrollTo('contact', { smooth: true })}>
-                Contact
-              </Button>
-            </TopAppBarSectionCentered>
+            <motion.div
+              initial={TitleStates.HIDDEN}
+              animate={headerControls}
+              variants={titleVariants}>
+              <TopAppBarSectionCentered>
+                {isXsmall ? (
+                  <IconButton
+                    icon="home"
+                    onClick={() => animateScroll.scrollToTop()}
+                  />
+                ) : (
+                  <Button onClick={() => animateScroll.scrollToTop()}>
+                    Home
+                  </Button>
+                )}
+                <Button
+                  onClick={() => scroller.scrollTo('about', { smooth: true })}>
+                  About
+                </Button>
+                <Button
+                  onClick={() => scroller.scrollTo('work', { smooth: true })}>
+                  Work
+                </Button>
+                <Button
+                  onClick={() => scroller.scrollTo('skills', { smooth: true })}>
+                  Skills
+                </Button>
+                <Button
+                  onClick={() =>
+                    scroller.scrollTo('education', { smooth: true })
+                  }>
+                  Education
+                </Button>
+                <Button
+                  onClick={() =>
+                    scroller.scrollTo('contact', { smooth: true })
+                  }>
+                  Contact
+                </Button>
+              </TopAppBarSectionCentered>
+            </motion.div>
           </TopAppBarRow>
         </TopAppBar>
       </StyledHeadroom>
       <Hero>
         <Sky />
         <Typography use="headline1" theme="textPrimaryOnDark">
-          <Title initial="hidden" animate="shown" variants={titleVariants}>
-            {items.map((item, i) => (
+          <Title
+            initial={TitleStates.HIDDEN}
+            animate={titleControls}
+            variants={titleVariants}>
+            {title.map((item, i) => (
               <motion.div variants={titleVariants} key={`letter-${i}`}>
                 {item}
               </motion.div>
             ))}
           </Title>
         </Typography>
-        <Subtitle
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { delay: 2 } }}>
+        <Subtitle animate={subtitleControls}>
           <Typography use="body1" theme="textPrimaryOnDark">
             I create engaging experiences through paper, screen, and matter.
           </Typography>
-          <Icons>
-            <IconButton
-              icon={{ icon: <SiGithub /> }}
-              onClick={() => window.open('https://github.com/danielmahon')}
-              rel="noopener noreferrer"
-              aria-label="Find me on Github!"
-            />
-            <IconButton
-              icon={{ icon: <SiLinkedin /> }}
-              onClick={() =>
-                window.open('https://www.linkedin.com/in/daniel-j-mahon/')
-              }
-              rel="noopener noreferrer"
-              aria-label="Find me on LinkedIn!"
-            />
-            <IconButton
-              icon={{ icon: <SiFacebook /> }}
-              onClick={() =>
-                window.open('https://www.facebook.com/danielmahon')
-              }
-              rel="noopener noreferrer"
-              aria-label="Find me on Facebook!"
-            />
-            <IconButton
-              icon={{ icon: <SiTwitter /> }}
-              onClick={() => window.open('https://twitter.com/danielmahon')}
-              rel="noopener noreferrer"
-              aria-label="Follow me on Twitter!"
-            />
-            <IconButton
-              icon={{ icon: <SiInstagram /> }}
-              onClick={() =>
-                window.open('https://www.instagram.com/daniel_mahon/')
-              }
-              rel="noopener noreferrer"
-              aria-label="Follow me on Instagram!"
-            />
-          </Icons>
+          <SocialIcons />
           {window.innerHeight < 896 && (
             <IconButton
               className="arrow-button"
@@ -238,5 +247,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

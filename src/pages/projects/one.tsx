@@ -2,11 +2,12 @@ import React from 'react';
 import { navigate } from 'gatsby';
 import styled from 'styled-components';
 
-import Layout from '../../components/layout';
-import SEO from '../../components/seo';
+import { Layout } from '../../components/layout';
+import { SEO } from '../../components/seo';
 import { Grid, GridCell } from '@rmwc/grid';
 import { Button } from '@rmwc/button';
-import { Typography } from '@rmwc/typography';
+import { Typography, TypographyProps } from '@rmwc/typography';
+import { HTMLProps } from '@rmwc/types';
 import { ProjectImage, Image } from '../../components/image';
 
 const HeroImage = styled.div`
@@ -16,7 +17,9 @@ const HeroImage = styled.div`
     border-radius: 0.25rem;
   }
 `;
-const Title = styled(Typography).attrs({ tag: 'h2', use: 'headline3' })`
+const Title = styled(Typography).attrs({ tag: 'h2', use: 'headline3' })<
+  TypographyProps & HTMLProps
+>`
   text-align: center;
   margin: 2rem 0;
 `;
@@ -24,7 +27,7 @@ const Subtitle = styled(Typography).attrs({
   tag: 'div',
   use: 'subtitle1',
   theme: 'primary',
-})`
+})<TypographyProps & HTMLProps>`
   text-align: center;
 `;
 

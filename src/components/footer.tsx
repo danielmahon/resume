@@ -5,7 +5,7 @@ import { Grid, GridCell } from '@rmwc/grid';
 import { Typography } from '@rmwc/typography';
 import { Button } from '@rmwc/button';
 
-const Footer = () => (
+export const Footer = () => (
   <footer
     style={{
       padding: '3rem 0 0 0',
@@ -17,17 +17,17 @@ const Footer = () => (
         <Typography use="headline5" tag="p">
           Thank you for your consideration!
         </Typography>
-        <Typography use="body1" tag="p">
+        <Typography use="body1" tag="div">
           <Button
             style={{ margin: '0 0.5rem' }}
             outlined
-            as="a"
+            tag="a"
             href="mailto:dan@mahonstudios.com">
             Email Me
           </Button>
           <Button
             outlined
-            as="a"
+            tag="a"
             target="__blank"
             style={{ margin: '0 0.5rem' }}
             href={withPrefix('daniel-mahons-resume.pdf')}>
@@ -45,9 +45,3 @@ const Footer = () => (
     </Grid>
   </footer>
 );
-
-Footer.propTypes = {};
-
-Footer.defaultProps = {};
-
-export default Footer;

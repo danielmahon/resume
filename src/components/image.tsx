@@ -52,7 +52,7 @@ export const Image = ({ src }) => {
     <StaticQuery
       query={graphql`
         query {
-          images: allFile {
+          images: allFile(filter: { extension: { ne: "svg" } }) {
             edges {
               node {
                 name

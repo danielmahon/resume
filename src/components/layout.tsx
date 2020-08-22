@@ -1,12 +1,11 @@
-import React, { PureComponent, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 // import { StaticQuery, graphql } from 'gatsby'
 import FontFaceObserver from 'fontfaceobserver';
 import { ThemeProvider } from '@rmwc/theme';
 
-import Header from './header';
-import Footer from './footer';
-import SEO from './seo';
+import { Header } from './header';
+import { Footer } from './footer';
+import { SEO } from './seo';
 
 // Import styles
 import 'normalize.css';
@@ -43,7 +42,11 @@ const options = {
   secondary: 'rgba(200, 111, 133, 1.00)',
 };
 
-const Layout = ({ children, secondary }) => {
+export type LayoutProps = {
+  secondary?: boolean;
+};
+
+export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -73,10 +76,3 @@ const Layout = ({ children, secondary }) => {
     </ThemeProvider>
   );
 };
-
-Layout.propTypes = {
-  secondary: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-};
-
-export default Layout;

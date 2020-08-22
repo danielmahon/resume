@@ -37,7 +37,7 @@ const ImageListLabelStyled = styled(ImageListLabel)`
   }
 `;
 
-const Skills = ({ path }) => (
+export const Skills = () => (
   <StaticQuery
     query={graphql`
       query {
@@ -78,4 +78,3 @@ const Skills = ({ path }) => (
     }}
   />
 );
-export default Skills;
