@@ -85,9 +85,10 @@ const tech: [string, string?, IconType?][] = [
 
 const ButtonSet = styled('div')`
   .mdc-button {
-    padding: 1.5rem;
+    padding: 1.25rem;
     margin: 0 0.5rem 0.5rem 0;
     font-size: 18px;
+    line-height: 18px;
     text-transform: inherit;
     font-weight: normal;
     letter-spacing: inherit;
