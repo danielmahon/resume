@@ -63,7 +63,7 @@ export const useBreakpoints = (
     [currentBreakpoint, currentBreakpointSize],
     setCurrentBreakpoint,
   ] = useState(
-    getBreakPoint(typeof window !== undefined ? window.innerWidth : 0)
+    getBreakPoint(typeof window === 'object' ? window.innerWidth : 0)
   );
 
   useEffect(() => {
