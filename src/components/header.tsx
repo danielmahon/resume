@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Headroom from 'react-headroom';
 import { animateScroll, scroller } from 'react-scroll';
 import { motion, Variants, useAnimation } from 'framer-motion';
-import Sky from './sky';
+import { Sky } from './sky';
 import delay from 'delay';
 import { SocialIcons } from './social-icons';
 import { useBreakpoints } from './hooks';

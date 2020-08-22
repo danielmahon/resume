@@ -1,7 +1,6 @@
 import React from 'react';
 import { darken, lighten } from 'polished';
 import styled from 'styled-components';
-import { ChipSet, Chip } from '@rmwc/chip';
 import { Typography } from '@rmwc/typography';
 import { IconType } from 'react-icons';
 import {
@@ -36,6 +35,7 @@ import {
   SiNetlify,
 } from 'react-icons/si';
 import { BiPyramid } from 'react-icons/bi';
+import { Button } from '@rmwc/button';
 
 const tech: [string, string?, IconType?][] = [
   ['Typescript', 'https://www.typescriptlang.org/', SiTypescript],
@@ -83,15 +83,15 @@ const tech: [string, string?, IconType?][] = [
   ['Plus many more...'],
 ];
 
-const StyledChipSet = styled(ChipSet)`
-  .mdc-chip {
+const ButtonSet = styled('div')`
+  .mdc-button {
     padding: 1.5rem;
+    margin: 0 0.5rem 0.5rem 0;
     font-size: 18px;
+    text-transform: inherit;
+    font-weight: normal;
+    letter-spacing: inherit;
     border-radius: 0.5rem;
-    i {
-      color: white;
-      padding-right: 0.25rem;
-    }
   }
 `;
 
@@ -102,10 +102,11 @@ export const TechCloud = () => {
         Some of my most proficient technologies, software languages, and
         programs. <i>(Click them to learn more.)</i>
       </Typography>
-      <StyledChipSet>
+      <ButtonSet>
         {tech.map(([word, link, Icon], i) => {
           return (
-            <Chip
+            <Button
+              disabled={i === tech.length - 1}
               icon={Icon ? { icon: <Icon /> } : null}
               style={{
                 color: 'white',
@@ -120,7 +121,7 @@ export const TechCloud = () => {
             />
           );
         })}
-      </StyledChipSet>
+      </ButtonSet>
     </>
   );
 };

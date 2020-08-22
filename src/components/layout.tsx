@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import { StaticQuery, graphql } from 'gatsby'
 import FontFaceObserver from 'fontfaceobserver';
 import { ThemeProvider } from '@rmwc/theme';
+import { motion } from 'framer-motion';
 
 import { Header } from './header';
 import { Footer } from './footer';
@@ -57,7 +58,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
     });
   }, []);
 
-  if (!ready) return null;
+  // if (!ready) return null;
 
   return (
     <ThemeProvider
@@ -70,9 +71,11 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
           rel="stylesheet"
         />
       </SEO>
-      {!secondary && <Header />}
-      <main>{children}</main>
-      <Footer />
+      <motion.div animate={{ opacity: ready ? 1 : 0 }}>
+        {!secondary && <Header />}
+        <main>{children}</main>
+        <Footer />
+      </motion.div>
     </ThemeProvider>
   );
 };

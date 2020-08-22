@@ -22,7 +22,7 @@ export const Footer = () => (
             style={{ margin: '0 0.5rem' }}
             outlined
             tag="a"
-            href="mailto:dan@mahonstudios.com">
+            href="mailto:daniel@mahonstudios.com">
             Email Me
           </Button>
           <Button

@@ -19,6 +19,7 @@ import { SEO } from '../components/seo';
 import { Skills } from '../components/skills';
 import { TechCloud } from '../components/tech-cloud';
 import { SocialIcons } from '../components/social-icons';
+import { SiLinkedin } from 'react-icons/si';
 
 const About = styled(Grid)`
   color: white;
@@ -57,9 +58,9 @@ const StyledGridTile = styled(GridTile)`
 const IndexPage = () => (
   <Layout>
     <SEO
-      title="Welcome, I'm Daniel Mahon"
       exact={true}
-      keywords={[`gatsby`, `application`, `react`]}
+      title="Daniel Mahon"
+      keywords={[`daniel mahon`, `developer`, `designer`]}
     />
     <Element name="about" />
     <AboutWrapper>
@@ -75,8 +76,8 @@ const IndexPage = () => (
           </Typography>
           <Typography use="body1" tag="p">
             My name is Daniel, and simply put, I love to make things look nice
-            and do stuff. I have worked in the creative industry for most of my
-            life and have had the privilege to learn and experience many
+            and do neat stuff. I have worked in the creative industry for most
+            of my life and have had the privilege to learn and experience many
             creative disciplines. I enjoy working solo as well as alongside
             other talented team members on unique and impactful projects.
             <br />
@@ -111,10 +112,9 @@ const IndexPage = () => (
             have learned a great deal from many talented people and
             institutions, I am also very good at teaching myself. I enjoy the
             challenge of learning new skills, especially when that knowledge
-            allows me to work on more challenging projects. My favorite
-            challenges are those which require combining a variety of
-            technologies from the physical and digital realms to form unique
-            experiences.
+            allows me to work on more diverse projects. My favorite challenges
+            are those which require combining a variety of technologies from the
+            physical and digital realms to form unique experiences.
             <br />
             <br />
             Today, I am looking to take the next step in my career and join a
@@ -151,7 +151,7 @@ const IndexPage = () => (
                 <br />
                 (646) 812-4550
                 <br />
-                dan@mahonstudios.com
+                daniel@mahonstudios.com
               </Typography>
             </GridCell>
             <GridCell
@@ -171,7 +171,7 @@ const IndexPage = () => (
                 tag="a"
                 target="_blank"
                 style={{ borderColor: 'rgba(255, 255, 255, 0.25)' }}
-                href="mailto:dan@mahonstudios.com">
+                href="mailto:daniel@mahonstudios.com">
                 Email Me
               </Button>
               <SocialIcons />
@@ -375,6 +375,63 @@ const IndexPage = () => (
           </Typography>
           Convio Innovator Award 2009
         </Typography>
+      </GridCell>
+    </Grid>
+    <Grid>
+      <GridCell span={4} style={{ textAlign: 'center' }}>
+        <Typography use="headline4" tag="p">
+          REFERENCES
+        </Typography>
+      </GridCell>
+      <GridCell span={8}>
+        <Typography use="headline5" tag="p">
+          Brian Walters
+          <br />
+          <Typography use="body1">
+            Chief Creative Officer | Communications Exhibits, Inc.
+          </Typography>
+        </Typography>
+        <Button
+          outlined
+          icon={{ icon: <SiLinkedin /> }}
+          tag="a"
+          target="_blank"
+          href="https://www.linkedin.com/in/brian-walters-16ab173/">
+          LinkedIn Profile
+        </Button>
+        <hr />
+        <Typography use="headline5" tag="p">
+          Linda Wenger
+          <br />
+          <Typography use="body1">
+            Sr. VP, Marketing and Communications | LUNGevity Foundation
+          </Typography>
+        </Typography>
+        <Button
+          outlined
+          icon={{ icon: <SiLinkedin /> }}
+          tag="a"
+          target="_blank"
+          href=" https://www.linkedin.com/in/linda-wenger-a100714/">
+          LinkedIn Profile
+        </Button>
+        <Typography use="body1" tag="p"></Typography>
+        <hr />
+        <Typography use="headline5" tag="p">
+          Jared Singer
+          <br />
+          <Typography use="body1" tag="i">
+            Director | MEP - PRIME AE Group, Inc.
+          </Typography>
+        </Typography>
+        <Button
+          outlined
+          icon={{ icon: <SiLinkedin /> }}
+          tag="a"
+          target="_blank"
+          href=" https://www.linkedin.com/in/jared-singer-pe-leed-ap-3525a73/">
+          LinkedIn Profile
+        </Button>
       </GridCell>
     </Grid>
     <Element name="education" />
