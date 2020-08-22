@@ -2,7 +2,7 @@
   "name": "gatsby-starter-default",
   "private": true,
   "description": "Daniel Mahon's resume site.",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Daniel Mahon <daniel@mahonstudios.com>",
   "dependencies": {
     "@rmwc/button": "6.1.3",
