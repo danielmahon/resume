@@ -1,12 +1,10 @@
 import React from 'react';
-// Import Swiper React components
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
-import 'swiper/swiper-bundle.min.css';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled from 'styled-components';
 import Img from 'gatsby-image';
+
+import 'swiper/swiper-bundle.min.css';
 
 SwiperCore.use([Autoplay]);
 
