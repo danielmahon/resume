@@ -234,7 +234,7 @@ export const Header = () => {
             I create engaging experiences through paper, screen, and matter.
           </Typography>
           <SocialIcons />
-          {window.innerHeight < 896 && (
+          {isXsmall && (
             <IconButton
               className="arrow-button"
               onClick={() => scroller.scrollTo('about', { smooth: true })}
