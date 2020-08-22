@@ -420,7 +420,7 @@ const IndexPage = () => (
         <Typography use="headline5" tag="p">
           Jared Singer
           <br />
-          <Typography use="body1" tag="i">
+          <Typography use="body1">
             Director | MEP - PRIME AE Group, Inc.
           </Typography>
         </Typography>
