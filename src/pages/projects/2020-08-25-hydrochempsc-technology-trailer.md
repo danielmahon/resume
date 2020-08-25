@@ -5,8 +5,7 @@ date: 2020-08-25T01:30:49.816Z
 thumbnail: /images/uploads/amtrust.png
 rating: 1
 tags:
-  - test
-  - "2"
+  - ""
 ---
 The HydroChemPSC Technology Trailer is an interactive mobile exhibit, that travels the country and showcases the company's latest services and technology through remotely updated touchscreen and physical interfaces.
 
