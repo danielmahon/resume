@@ -51,7 +51,7 @@ export const ShootingStars = () => {
       const left = random(0, width);
       const top = random(0, 20);
       const targetLeft = random(0, width);
-      const targetTop = random(height * 0.4, height * 0.6);
+      const targetTop = random(height * 0.4, height * 0.75);
       const rotation =
         Math.atan2(targetTop - top, targetLeft - left) * (180 / Math.PI);
 
@@ -68,6 +68,9 @@ export const ShootingStars = () => {
       sequence();
     };
     sequence();
+    return () => {
+      animation.unmount();
+    };
   }, [animation, ref]);
 
   return (

@@ -38,7 +38,7 @@ const ImageListLabelStyled = styled(ImageListLabel)`
 `;
 
 export const Skills = () => (
-  <StaticQuery
+  <StaticQuery<GatsbyTypes.Query>
     query={graphql`
       query {
         images: allFile(

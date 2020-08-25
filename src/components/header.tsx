@@ -17,6 +17,7 @@ const StyledHeadroom = styled(Headroom)`
   top: 0;
   left: 0;
   right: 0;
+  z-index: 100;
   .mdc-top-app-bar {
     transition: background-color 275ms ease;
   }
@@ -143,13 +144,12 @@ export const Header = () => {
   const subtitleControls = useAnimation();
   const [title, setTitle] = useState(Array.from(`Hello there,`));
   const { isXsmall } = useBreakpoints();
+  const [shown, setShown] = useState(false);
 
-  // console.log(breakpoint);
-  // console.log(size);
-  // console.log(isSmall);
-
+  // Intro animation
   useEffect(() => {
-    const sequence = async () => {
+    if (shown) return;
+    (async () => {
       await delay(1000);
       await titleControls.start(TitleStates.SHOWN);
       await delay(500);
@@ -162,9 +162,9 @@ export const Header = () => {
         transition: { duration: 1 },
       });
       await headerControls.start(TitleStates.SHOWN);
-    };
-    sequence();
-  }, [titleControls, subtitleControls, headerControls, setTitle]);
+      setShown(true);
+    })();
+  }, [shown, titleControls, subtitleControls, headerControls, setTitle]);
 
   return (
     <header>

@@ -19,17 +19,18 @@ export const Footer = () => (
         </Typography>
         <Typography use="body1" tag="div">
           <Button
-            style={{ margin: '0 0.5rem' }}
-            outlined
+            raised
+            style={{ margin: '0.5rem' }}
             tag="a"
+            target="_blank"
             href="mailto:daniel@mahonstudios.com">
             Email Me
           </Button>
           <Button
-            outlined
+            raised
             tag="a"
             target="__blank"
-            style={{ margin: '0 0.5rem' }}
+            style={{ margin: '0.5rem' }}
             href={withPrefix('daniel-mahons-resume.pdf')}>
             Download my Resumé
           </Button>

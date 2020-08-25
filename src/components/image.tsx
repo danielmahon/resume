@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import {
@@ -24,8 +24,10 @@ import { Elevation } from '@rmwc/elevation';
 const ProjectImageWrapper = styled(Elevation)`
   cursor: pointer;
   border-radius: 0.25rem;
+  height: 100%;
   .gatsby-image-wrapper {
     width: 100%;
+    height: 100%;
     max-height: 265px;
     border-radius: inherit;
   }
@@ -47,36 +49,38 @@ const FullDialog = styled(Dialog)`
   }
 ` as typeof Dialog;
 
-export const Image = ({ src }) => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          images: allFile(filter: { extension: { ne: "svg" } }) {
-            edges {
-              node {
-                name
-                relativePath
-                childImageSharp {
-                  fluid(maxWidth: 1280) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
+const query = graphql`
+  query {
+    images: allFile(
+      filter: { sourceInstanceName: { eq: "images" }, extension: { ne: "svg" } }
+    ) {
+      edges {
+        node {
+          name
+          relativePath
+          childImageSharp {
+            fluid(maxWidth: 1280) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
-      `}
-      render={(data) => {
-        if (!src) return null;
-        const image = data.images.edges.find((n) => {
-          return n.node.relativePath.includes(src);
-        });
-        if (!image) return null;
-        return <Img fluid={image.node.childImageSharp.fluid} />;
-      }}
-    />
-  );
+      }
+    }
+  }
+`;
+
+export const Image = ({ src }) => {
+  const data = useStaticQuery(query);
+
+  if (!src) return null;
+
+  const image = data.images.edges.find((n) => {
+    return n.node.relativePath.includes(src);
+  });
+
+  if (!image) return null;
+
+  return <Img fluid={image.node.childImageSharp.fluid} />;
 };
 
 //  state = { open: false, hover: false };
@@ -96,7 +100,6 @@ export const ProjectImage = ({ src }) => {
       <FullDialog
         open={state.open}
         onClose={(evt) => {
-          console.log(evt.detail);
           setState({ ...state, open: false });
         }}>
         <DialogContent>

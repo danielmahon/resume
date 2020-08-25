@@ -14,13 +14,16 @@ hr {
   color: var(--mdc-theme-primary);
 }
 #theme {
-  background-color: white;
   transition: opacity 1s ease;
   opacity: 0;
 }
 
 #theme.fonts-loaded {
   opacity: 1;
+}
+
+main {
+  background-color: white;
 }
 
 .embed-container {

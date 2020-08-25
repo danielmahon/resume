@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { StaticQuery, graphql } from 'gatsby'
 import FontFaceObserver from 'fontfaceobserver';
 import { ThemeProvider } from '@rmwc/theme';
 import { motion } from 'framer-motion';
@@ -24,17 +23,6 @@ import '@rmwc/elevation/styles';
 import '@rmwc/icon-button/styles';
 import '@rmwc/chip/styles';
 
-// import "@material/layout-grid/dist/mdc.layout-grid.css"
-// import "@material/top-app-bar/dist/mdc.top-app-bar.css"
-// import "@material/button/dist/mdc.button.css"
-// import "@material/typography/dist/mdc.typography.css"
-// import "@material/theme/dist/mdc.theme.css"
-// import "@material/icon-button/dist/mdc.icon-button.css"
-// import "@material/grid-list/dist/mdc.grid-list.css"
-// import "@material/image-list/dist/mdc.image-list.css"
-// import "@material/dialog/dist/mdc.dialog.css"
-// import "@material/elevation/dist/mdc.elevation.css"
-
 // Import custom styles
 import './layout.css';
 
@@ -58,8 +46,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
     });
   }, []);
 
-  // if (!ready) return null;
-
   return (
     <ThemeProvider
       id="theme"
@@ -70,6 +56,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />
+        {/* Netlify Identity Widget */}
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       </SEO>
       <motion.div animate={{ opacity: ready ? 1 : 0 }}>
         {!secondary && <Header />}

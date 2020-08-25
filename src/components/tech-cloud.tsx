@@ -34,6 +34,8 @@ import {
   SiHeroku,
   SiNetlify,
   SiGatsby,
+  SiDocker,
+  SiTrello,
 } from 'react-icons/si';
 import { BiPyramid } from 'react-icons/bi';
 import { Button } from '@rmwc/button';
@@ -45,6 +47,7 @@ const tech: [string, string?, IconType?][] = [
   ['Dart', 'https://dart.dev/', SiDart],
   ['ReactJS', 'https://reactjs.org/', SiReact],
   ['GatsbyJS', 'https://www.gatsbyjs.com/', SiGatsby],
+  ['Docker', 'https://www.docker.com/', SiDocker],
   ['Adobe Creative Cloud', 'https://www.adobe.com/creativecloud.html', SiAdobe],
   ['Material Design', 'https://material.io/', SiMaterialdesign],
   ['Unity', 'https://unity.com/', SiUnity],
@@ -82,6 +85,7 @@ const tech: [string, string?, IconType?][] = [
     SiAutodesk,
   ],
   ['Git', 'https://git-scm.com/', SiGit],
+  ['Trello', 'https://trello.com/', SiTrello],
   ['Plus many more...'],
 ];
 
@@ -109,10 +113,11 @@ export const TechCloud = () => {
       </Typography>
       <ButtonSet>
         {tech.map(([word, link, Icon], i) => {
+          const icon = Icon ? { icon: <Icon /> } : null;
           return (
             <Button
               disabled={i === tech.length - 1}
-              icon={Icon ? { icon: <Icon /> } : null}
+              icon={icon}
               style={{
                 color: 'white',
                 backgroundColor: lighten(
