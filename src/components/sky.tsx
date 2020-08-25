@@ -44,8 +44,9 @@ export const ShootingStars = () => {
 
   useEffect(() => {
     if (ref.current === null) return;
+    const controller = new AbortController();
     const sequence = async () => {
-      await delay(random(1000, 5000));
+      await delay(random(1000, 5000), { signal: controller.signal });
       const width = ref.current?.clientWidth ?? 0;
       const height = ref.current?.clientHeight ?? 0;
       const left = random(0, width);
@@ -69,6 +70,7 @@ export const ShootingStars = () => {
     };
     sequence();
     return () => {
+      controller.abort();
       animation.unmount();
     };
   }, [animation, ref]);

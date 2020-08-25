@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FontFaceObserver from 'fontfaceobserver';
-import { ThemeProvider } from '@rmwc/theme';
+import { ThemeProvider as RMWCThemeProvider } from '@rmwc/theme';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { motion } from 'framer-motion';
 
 import { Header } from './header';
@@ -25,6 +26,7 @@ import '@rmwc/chip/styles';
 
 // Import custom styles
 import './layout.css';
+import { useBreakpoints } from './hooks';
 
 const options = {
   primary: 'rgba(56, 139, 154, 1.00)',
@@ -37,6 +39,7 @@ export type LayoutProps = {
 
 export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
   const [ready, setReady] = useState(false);
+  const breakpoints = useBreakpoints();
 
   useEffect(() => {
     var fontA = new FontFaceObserver('Roboto');
@@ -47,23 +50,25 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
   }, []);
 
   return (
-    <ThemeProvider
-      id="theme"
-      className={ready ? 'fonts-loaded' : ''}
-      options={options}>
-      <SEO bodyAttributes={{ class: 'mdc-typography' }}>
-        <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        />
-        {/* Netlify Identity Widget */}
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-      </SEO>
-      <motion.div animate={{ opacity: ready ? 1 : 0 }}>
-        {!secondary && <Header />}
-        <main>{children}</main>
-        <Footer />
-      </motion.div>
-    </ThemeProvider>
+    <StyledThemeProvider theme={{ ...options, ...breakpoints }}>
+      <RMWCThemeProvider
+        id="theme"
+        className={ready ? 'fonts-loaded' : ''}
+        options={options}>
+        <SEO bodyAttributes={{ class: 'mdc-typography' }}>
+          <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+          />
+          {/* Netlify Identity Widget */}
+          <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+        </SEO>
+        <motion.div animate={{ opacity: ready ? 1 : 0 }}>
+          {!secondary && <Header />}
+          <main>{children}</main>
+          <Footer />
+        </motion.div>
+      </RMWCThemeProvider>
+    </StyledThemeProvider>
   );
 };

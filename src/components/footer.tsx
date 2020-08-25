@@ -9,7 +9,7 @@ export const Footer = () => (
   <footer
     style={{
       padding: '3rem 0 0 0',
-      margin: '3rem 0 0 0',
+      // margin: '3rem 0 0 0',
       backgroundColor: 'rgba(205, 226, 230, 1.00)',
     }}>
     <Grid>

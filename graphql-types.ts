@@ -3113,7 +3113,7 @@ export type ProjectQuery = { mdx?: Maybe<(
     Pick<Mdx, 'id' | 'body'>
     & { frontmatter?: Maybe<(
       Pick<MdxFrontmatter, 'date' | 'title' | 'subtitle' | 'description' | 'challenge' | 'solution' | 'videos'>
-      & { images?: Maybe<Array<Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>>> }
+      & { feature?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>, images?: Maybe<Array<Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>>> }
     )> }
   )> };
 
