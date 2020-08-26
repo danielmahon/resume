@@ -24,10 +24,17 @@ collections:
       - { label: 'Subtitle', name: 'subtitle', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Tags', name: 'tags', widget: 'list', required: false }
+      - { label: 'Client', name: 'client', widget: 'string' }
+      - { label: 'Roles', name: 'roles', widget: 'list' }
       - { label: 'Description', name: 'description', widget: 'markdown' }
       - { label: 'Challenge', name: 'challenge', widget: 'markdown' }
       - { label: 'Solution', name: 'solution', widget: 'markdown' }
       - { label: 'Featured Image', name: 'feature', widget: 'image' }
-      - { label: 'Images', name: 'images', widget: 'list', required: false }
-      - { label: 'Videos', name: 'videos', widget: 'list', required: false }
+      - label: 'Images'
+        name: 'images'
+        widget: 'list'
+        field: { label: 'Image', name: 'image', widget: 'image' }
+      - label: 'Videos'
+        name: 'videos'
+        widget: 'list'
       - { label: 'Body', name: 'body', widget: 'markdown', required: false }

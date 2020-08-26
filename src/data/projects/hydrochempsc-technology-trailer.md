@@ -4,6 +4,11 @@ title: HydroChemPSC Technology Trailer
 subtitle: Interactive trade show exhibit that travels to your doorstep.
 date: 2020-08-25T05:58:39.837Z
 feature: /images/uploads/DSC_5056.jpg
+client: HydroChemPSC
+roles:
+  - Creative Director
+  - Lead Designer
+  - Lead Developer
 description: >-
   The HydroChemPSC Technology Trailer is an interactive mobile exhibit, that travels the country and showcases the company's latest services and technology through remotely updated touchscreen and physical interfaces.
 challenge: >-
@@ -17,7 +22,6 @@ solution: >-
 
   The content needed to frequently update so that they could keep their brand and message ahead of the competition. The ultimate goal was to inform, educate, and impress upon prospective customers the value of their services and advanced technology.
 images:
-  - /images/uploads/DSC_5056.jpg
   - /images/uploads/DSC_5056.jpg
   - /images/uploads/DSC_5056.jpg
   - /images/uploads/DSC_5056.jpg

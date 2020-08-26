@@ -3,6 +3,7 @@ import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+import { ClientImagesQuery } from '../../graphql-types';
 
 import 'swiper/swiper-bundle.min.css';
 import { useBreakpoints } from './hooks';
@@ -10,18 +11,17 @@ import { useBreakpoints } from './hooks';
 SwiperCore.use([Autoplay]);
 
 const query = graphql`
-  query {
-    images: allFile(
-      filter: { relativeDirectory: { eq: "clients" } }
-      sort: { fields: name, order: ASC }
-    ) {
+  query ClientImages {
+    allFile(filter: { relativeDirectory: { eq: "clients" } }) {
       nodes {
-        name
-        publicURL
-        relativeDirectory
+        id
         childImageSharp {
           fluid(maxWidth: 512) {
-            ...GatsbyImageSharpFluid
+            base64
+            aspectRatio
+            src
+            srcSet
+            sizes
           }
         }
       }
@@ -30,9 +30,9 @@ const query = graphql`
 `;
 
 export const Clients = () => {
-  const data = useStaticQuery(query);
+  const data = useStaticQuery<ClientImagesQuery>(query);
   const { isXsmall } = useBreakpoints();
-  const nodes = data?.images?.nodes;
+  const nodes = data?.allFile?.nodes;
 
   return (
     <div style={{ padding: '1rem' }}>
@@ -45,15 +45,12 @@ export const Clients = () => {
           delay: 2000,
           disableOnInteraction: false,
         }}>
-        {nodes.map((node) => {
-          const image = node.childImageSharp;
-
-          if (image === null) return null;
-
+        {nodes.map(({ childImageSharp }, i) => {
+          if (!childImageSharp) return null;
           return (
-            <SwiperSlide key={`${node.name}`}>
+            <SwiperSlide key={`image-${i}`}>
               <Img
-                fluid={image.fluid}
+                fluid={childImageSharp.fluid}
                 fadeIn={false}
                 style={{ height: '100%' }}
                 imgStyle={{ objectFit: 'contain' }}

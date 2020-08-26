@@ -25,12 +25,12 @@ const HeroImage = styled.div`
     padding-top: 56.25%;
   }
 `;
-const Title = styled(Typography).attrs({ tag: 'h1', use: 'headline1' })<
+const Title = styled(Typography).attrs({ tag: 'h1', use: 'div' })<
   TypographyProps & HTMLProps
 >`
   max-width: 700px;
-  margin: 0 auto;
-  font-weight: 300;
+  margin: 1rem auto;
+  font-weight: 400;
   font-size: ${({ theme }) => (theme.isLteSmall ? 34 : 40)}px;
 `;
 
@@ -72,6 +72,8 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
   const feature = frontmatter?.feature?.childImageSharp?.fluid;
   const videos = frontmatter?.videos ?? [];
   const images = frontmatter?.images ?? [];
+  const client = frontmatter?.client ?? '';
+  const roles = frontmatter?.roles ?? [];
   const body = data.mdx?.body ?? '';
 
   return (
@@ -85,6 +87,13 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
             </Button>
             <Title>{title}</Title>
             <Subtitle>{subtitle}</Subtitle>
+          </GridCell>
+          <GridCell span={12}>
+            <Paragraph>
+              <b>Client:</b> {client}
+              <br />
+              <b>Roles:</b> {roles.join(' • ')}
+            </Paragraph>
           </GridCell>
           <GridCell span={12} style={{ textAlign: 'center' }}>
             <HeroImage>
@@ -157,20 +166,30 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         subtitle
+        client
+        roles
         description
         challenge
         solution
         feature {
           childImageSharp {
             fluid(maxWidth: 1280) {
-              ...GatsbyImageSharpFluid
+              base64
+              aspectRatio
+              src
+              srcSet
+              sizes
             }
           }
         }
         images {
           childImageSharp {
             fluid(maxWidth: 1280) {
-              ...GatsbyImageSharpFluid
+              base64
+              aspectRatio
+              src
+              srcSet
+              sizes
             }
           }
         }

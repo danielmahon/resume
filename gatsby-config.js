@@ -6,7 +6,12 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-typescript`,
-    // `gatsby-plugin-graphql-codegen`,
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        documentPaths: ['./src/**/*.{ts,tsx}'],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {

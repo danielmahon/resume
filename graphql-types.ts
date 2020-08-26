@@ -738,6 +738,8 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___feature___publicURL'
   | 'childMdx___frontmatter___feature___id'
   | 'childMdx___frontmatter___feature___children'
+  | 'childMdx___frontmatter___client'
+  | 'childMdx___frontmatter___roles'
   | 'childMdx___frontmatter___images'
   | 'childMdx___frontmatter___images___sourceInstanceName'
   | 'childMdx___frontmatter___images___absolutePath'
@@ -1588,6 +1590,8 @@ export type MdxFieldsEnum =
   | 'frontmatter___feature___childMdx___timeToRead'
   | 'frontmatter___feature___childMdx___id'
   | 'frontmatter___feature___childMdx___children'
+  | 'frontmatter___client'
+  | 'frontmatter___roles'
   | 'frontmatter___images'
   | 'frontmatter___images___sourceInstanceName'
   | 'frontmatter___images___absolutePath'
@@ -1786,6 +1790,8 @@ export type MdxFrontmatter = {
   subtitle?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
   feature?: Maybe<File>;
+  client?: Maybe<Scalars['String']>;
+  roles?: Maybe<Array<Maybe<Scalars['String']>>>;
   images?: Maybe<Array<Maybe<File>>>;
   videos?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
@@ -1807,6 +1813,8 @@ export type MdxFrontmatterFilterInput = {
   subtitle?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   feature?: Maybe<FileFilterInput>;
+  client?: Maybe<StringQueryOperatorInput>;
+  roles?: Maybe<StringQueryOperatorInput>;
   images?: Maybe<FileFilterListInput>;
   videos?: Maybe<StringQueryOperatorInput>;
 };
@@ -2668,6 +2676,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___resolve'
   | 'pluginCreator___name'
   | 'pluginCreator___version'
+  | 'pluginCreator___pluginOptions___documentPaths'
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___extensions'
@@ -2870,6 +2879,7 @@ export type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
+  | 'pluginOptions___documentPaths'
   | 'pluginOptions___path'
   | 'pluginOptions___name'
   | 'pluginOptions___extensions'
@@ -3000,6 +3010,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
+  documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
   path?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -3018,6 +3029,7 @@ export type SitePluginPluginOptions = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  documentPaths?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
@@ -3070,20 +3082,20 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
-export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+export type ClientImagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { images: { nodes: Array<(
-      Pick<File, 'name' | 'publicURL' | 'relativeDirectory'>
-      & { childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }
+export type ClientImagesQuery = { allFile: { nodes: Array<(
+      Pick<File, 'id'>
+      & { childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }
     )> } };
 
-export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+export type AllImagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_2_Query = { images: { edges: Array<{ node: (
+export type AllImagesQuery = { images: { edges: Array<{ node: (
         Pick<File, 'name' | 'relativePath'>
-        & { childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }
+        & { childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }
       ) }> } };
 
 export type ProjectLinksQueryVariables = Exact<{ [key: string]: never; }>;
@@ -3091,7 +3103,7 @@ export type ProjectLinksQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ProjectLinksQuery = { allMdx: { nodes: Array<(
       Pick<Mdx, 'slug'>
-      & { frontmatter?: Maybe<{ feature?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }> }
+      & { frontmatter?: Maybe<{ feature?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }> }> }
     )> } };
 
 export type DefaultSeoQueryQueryVariables = Exact<{ [key: string]: never; }>;
@@ -3099,10 +3111,10 @@ export type DefaultSeoQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type DefaultSeoQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
-export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
+export type SkillsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_3_Query = { images: { edges: Array<{ node: Pick<File, 'name' | 'publicURL' | 'relativeDirectory'> }> } };
+export type SkillsQuery = { images: { edges: Array<{ node: Pick<File, 'name' | 'publicURL' | 'relativeDirectory'> }> } };
 
 export type ProjectQueryVariables = Exact<{
   id: Scalars['String'];
@@ -3112,57 +3124,7 @@ export type ProjectQueryVariables = Exact<{
 export type ProjectQuery = { mdx?: Maybe<(
     Pick<Mdx, 'id' | 'body'>
     & { frontmatter?: Maybe<(
-      Pick<MdxFrontmatter, 'date' | 'title' | 'subtitle' | 'description' | 'challenge' | 'solution' | 'videos'>
-      & { feature?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>, images?: Maybe<Array<Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>>> }
+      Pick<MdxFrontmatter, 'date' | 'title' | 'subtitle' | 'client' | 'roles' | 'description' | 'challenge' | 'solution' | 'videos'>
+      & { feature?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }>, images?: Maybe<Array<Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }>>> }
     )> }
   )> };
-
-export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpFixed_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpFixed_WithWebpFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpFixed_NoBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] };
-
-export type GatsbyImageSharpFluid_TracedSvgFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpFluid_WithWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpFluid_NoBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpResolutionsFragment = Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpResolutions_TracedSvgFragment = Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpResolutions_WithWebpFragment = Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpResolutions_WithWebp_TracedSvgFragment = Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpResolutions_NoBase64Fragment = Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpResolutions_WithWebp_NoBase64Fragment = Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpSizesFragment = Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_TracedSvgFragment = Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_WithWebpFragment = Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_WithWebp_TracedSvgFragment = Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_NoBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;

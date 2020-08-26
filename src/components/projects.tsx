@@ -34,7 +34,11 @@ const getProjectLinks = graphql`
           feature {
             childImageSharp {
               fluid(maxWidth: 1280) {
-                ...GatsbyImageSharpFluid
+                base64
+                aspectRatio
+                src
+                srcSet
+                sizes
               }
             }
           }

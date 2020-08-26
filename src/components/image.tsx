@@ -9,6 +9,7 @@ import {
   DialogButton,
 } from '@rmwc/dialog';
 import { Elevation } from '@rmwc/elevation';
+import { AllImagesQuery } from '../../graphql-types';
 
 const ProjectImageWrapper = styled(Elevation)`
   cursor: pointer;
@@ -39,7 +40,7 @@ const FullDialog = styled(Dialog)`
 ` as typeof Dialog;
 
 const query = graphql`
-  query {
+  query AllImages {
     images: allFile(
       filter: { sourceInstanceName: { eq: "images" }, extension: { ne: "svg" } }
     ) {
@@ -49,7 +50,11 @@ const query = graphql`
           relativePath
           childImageSharp {
             fluid(maxWidth: 1280) {
-              ...GatsbyImageSharpFluid
+              base64
+              aspectRatio
+              src
+              srcSet
+              sizes
             }
           }
         }
@@ -59,17 +64,18 @@ const query = graphql`
 `;
 
 export const Image = ({ src }) => {
-  const data = useStaticQuery(query);
+  const data = useStaticQuery<AllImagesQuery>(query);
 
   if (!src) return null;
 
   const image = data.images.edges.find((n) => {
     return n.node.relativePath.includes(src);
   });
+  const fluid = image.node?.childImageSharp?.fluid;
 
-  if (!image) return null;
+  if (!image || !fluid) return null;
 
-  return <Img fluid={image.node.childImageSharp.fluid} />;
+  return <Img fluid={fluid} />;
 };
 
 //  state = { open: false, hover: false };

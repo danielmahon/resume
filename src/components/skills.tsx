@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import {
   ImageList,
   ImageListItem,
@@ -37,44 +37,42 @@ const ImageListLabelStyled = styled(ImageListLabel)`
   }
 `;
 
-export const Skills = () => (
-  <StaticQuery<GatsbyTypes.Query>
-    query={graphql`
-      query {
-        images: allFile(
-          filter: { relativeDirectory: { eq: "skills" } }
-          sort: { fields: name, order: ASC }
-        ) {
-          edges {
-            node {
-              name
-              publicURL
-              relativeDirectory
-            }
-          }
+const query = graphql`
+  query Skills {
+    images: allFile(
+      filter: { relativeDirectory: { eq: "skills" } }
+      sort: { fields: name, order: ASC }
+    ) {
+      edges {
+        node {
+          name
+          publicURL
+          relativeDirectory
         }
       }
-    `}
-    render={(data) => {
-      return (
-        <ImageList>
-          {data.images.edges.map(({ node }) => {
-            const name = node.name.replace(/^\d+-/, '');
-            return (
-              <ImageListItemStyled key={node.name}>
-                <ImageListImageAspectContainer>
-                  <ImageListImage src={node.publicURL} />
-                </ImageListImageAspectContainer>
-                <ImageListSupporting>
-                  <ImageListLabelStyled>
-                    {startCase(name).replace('Xx', '&')}
-                  </ImageListLabelStyled>
-                </ImageListSupporting>
-              </ImageListItemStyled>
-            );
-          })}
-        </ImageList>
-      );
-    }}
-  />
-);
+    }
+  }
+`;
+
+export const Skills = () => {
+  const data = useStaticQuery<SkillsQuery>(query);
+  return (
+    <ImageList>
+      {data.images.edges.map(({ node }) => {
+        const name = node.name.replace(/^\d+-/, '');
+        return (
+          <ImageListItemStyled key={node.name}>
+            <ImageListImageAspectContainer>
+              <ImageListImage src={node.publicURL} />
+            </ImageListImageAspectContainer>
+            <ImageListSupporting>
+              <ImageListLabelStyled>
+                {startCase(name).replace('Xx', '&')}
+              </ImageListLabelStyled>
+            </ImageListSupporting>
+          </ImageListItemStyled>
+        );
+      })}
+    </ImageList>
+  );
+};
