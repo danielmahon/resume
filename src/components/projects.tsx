@@ -44,9 +44,7 @@ export const Projects = () => {
 
         return (
           <StyledGridTile key={project.slug}>
-            <Link
-              to={project.slug}
-              state={{ prevPath: window.location.pathname }}>
+            <Link to={project.slug}>
               <GridTilePrimary>
                 <Img fluid={fluid as any} />
               </GridTilePrimary>
