@@ -3,9 +3,9 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
-import React from 'react';
-import { store, StoreProvider } from './src/store';
-import { Layout } from './src/layouts';
+const React = require('react');
+const { store, StoreProvider } = require('./src/store');
+const { Layout } = require('./src/layouts');
 
 export const shouldUpdateScroll = ({ prevRouterProps, routerProps }) => {
   if (!prevRouterProps) {

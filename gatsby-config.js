@@ -32,9 +32,10 @@ module.exports = {
         name: 'images',
       },
     },
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-mdx-frontmatter`,
+    'gatsby-remark-relative-images',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

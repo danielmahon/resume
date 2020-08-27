@@ -10,7 +10,12 @@ description: Interactive Conference Room
 challenge: Interactive Conference Room
 solution: Interactive Conference Room
 feature: /images/uploads/DSC_5011.jpg
+images:
+  - /images/uploads/DSC_5056.jpg
+  - /images/uploads/DSC_4976.jpg
+  - /images/uploads/DSC_4976.jpg
 videos:
   - https://www.youtube.com/embed/QSgAxLhrHL8
 ---
+
 Interactive Conference Room

@@ -698,6 +698,11 @@ enum FileFieldsEnum {
   childMdx___frontmatter___description = 'childMdx.frontmatter.description',
   childMdx___frontmatter___challenge = 'childMdx.frontmatter.challenge',
   childMdx___frontmatter___solution = 'childMdx.frontmatter.solution',
+  childMdx___frontmatter___layout = 'childMdx.frontmatter.layout',
+  childMdx___frontmatter___subtitle = 'childMdx.frontmatter.subtitle',
+  childMdx___frontmatter___date = 'childMdx.frontmatter.date',
+  childMdx___frontmatter___client = 'childMdx.frontmatter.client',
+  childMdx___frontmatter___roles = 'childMdx.frontmatter.roles',
   childMdx___frontmatter___feature___sourceInstanceName = 'childMdx.frontmatter.feature.sourceInstanceName',
   childMdx___frontmatter___feature___absolutePath = 'childMdx.frontmatter.feature.absolutePath',
   childMdx___frontmatter___feature___relativePath = 'childMdx.frontmatter.feature.relativePath',
@@ -771,11 +776,6 @@ enum FileFieldsEnum {
   childMdx___frontmatter___images___publicURL = 'childMdx.frontmatter.images.publicURL',
   childMdx___frontmatter___images___id = 'childMdx.frontmatter.images.id',
   childMdx___frontmatter___images___children = 'childMdx.frontmatter.images.children',
-  childMdx___frontmatter___layout = 'childMdx.frontmatter.layout',
-  childMdx___frontmatter___subtitle = 'childMdx.frontmatter.subtitle',
-  childMdx___frontmatter___date = 'childMdx.frontmatter.date',
-  childMdx___frontmatter___client = 'childMdx.frontmatter.client',
-  childMdx___frontmatter___roles = 'childMdx.frontmatter.roles',
   childMdx___frontmatter___videos = 'childMdx.frontmatter.videos',
   childMdx___slug = 'childMdx.slug',
   childMdx___body = 'childMdx.body',
@@ -1530,6 +1530,11 @@ enum MdxFieldsEnum {
   frontmatter___description = 'frontmatter.description',
   frontmatter___challenge = 'frontmatter.challenge',
   frontmatter___solution = 'frontmatter.solution',
+  frontmatter___layout = 'frontmatter.layout',
+  frontmatter___subtitle = 'frontmatter.subtitle',
+  frontmatter___date = 'frontmatter.date',
+  frontmatter___client = 'frontmatter.client',
+  frontmatter___roles = 'frontmatter.roles',
   frontmatter___feature___sourceInstanceName = 'frontmatter.feature.sourceInstanceName',
   frontmatter___feature___absolutePath = 'frontmatter.feature.absolutePath',
   frontmatter___feature___relativePath = 'frontmatter.feature.relativePath',
@@ -1655,11 +1660,6 @@ enum MdxFieldsEnum {
   frontmatter___images___childMdx___timeToRead = 'frontmatter.images.childMdx.timeToRead',
   frontmatter___images___childMdx___id = 'frontmatter.images.childMdx.id',
   frontmatter___images___childMdx___children = 'frontmatter.images.childMdx.children',
-  frontmatter___layout = 'frontmatter.layout',
-  frontmatter___subtitle = 'frontmatter.subtitle',
-  frontmatter___date = 'frontmatter.date',
-  frontmatter___client = 'frontmatter.client',
-  frontmatter___roles = 'frontmatter.roles',
   frontmatter___videos = 'frontmatter.videos',
   slug = 'slug',
   body = 'body',
@@ -1792,13 +1792,13 @@ type MdxFrontmatter = {
   readonly description: Maybe<Scalars['String']>;
   readonly challenge: Maybe<Scalars['String']>;
   readonly solution: Maybe<Scalars['String']>;
-  readonly feature: Maybe<File>;
-  readonly images: Maybe<ReadonlyArray<Maybe<File>>>;
   readonly layout: Maybe<Scalars['String']>;
   readonly subtitle: Maybe<Scalars['String']>;
   readonly date: Maybe<Scalars['Date']>;
   readonly client: Maybe<Scalars['String']>;
   readonly roles: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly feature: Maybe<File>;
+  readonly images: Maybe<ReadonlyArray<Maybe<File>>>;
   readonly videos: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
@@ -1815,13 +1815,13 @@ type MdxFrontmatterFilterInput = {
   readonly description: Maybe<StringQueryOperatorInput>;
   readonly challenge: Maybe<StringQueryOperatorInput>;
   readonly solution: Maybe<StringQueryOperatorInput>;
-  readonly feature: Maybe<FileFilterInput>;
-  readonly images: Maybe<FileFilterListInput>;
   readonly layout: Maybe<StringQueryOperatorInput>;
   readonly subtitle: Maybe<StringQueryOperatorInput>;
   readonly date: Maybe<DateQueryOperatorInput>;
   readonly client: Maybe<StringQueryOperatorInput>;
   readonly roles: Maybe<StringQueryOperatorInput>;
+  readonly feature: Maybe<FileFilterInput>;
+  readonly images: Maybe<FileFilterListInput>;
   readonly videos: Maybe<StringQueryOperatorInput>;
 };
 
@@ -2690,6 +2690,7 @@ enum SitePageFieldsEnum {
   pluginCreator___version = 'pluginCreator.version',
   pluginCreator___pluginOptions___path = 'pluginCreator.pluginOptions.path',
   pluginCreator___pluginOptions___name = 'pluginCreator.pluginOptions.name',
+  pluginCreator___pluginOptions___staticFolderName = 'pluginCreator.pluginOptions.staticFolderName',
   pluginCreator___pluginOptions___extensions = 'pluginCreator.pluginOptions.extensions',
   pluginCreator___pluginOptions___short_name = 'pluginCreator.pluginOptions.short_name',
   pluginCreator___pluginOptions___start_url = 'pluginCreator.pluginOptions.start_url',
@@ -2892,6 +2893,7 @@ enum SitePluginFieldsEnum {
   version = 'version',
   pluginOptions___path = 'pluginOptions.path',
   pluginOptions___name = 'pluginOptions.name',
+  pluginOptions___staticFolderName = 'pluginOptions.staticFolderName',
   pluginOptions___extensions = 'pluginOptions.extensions',
   pluginOptions___short_name = 'pluginOptions.short_name',
   pluginOptions___start_url = 'pluginOptions.start_url',
@@ -3020,6 +3022,7 @@ type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 type SitePluginPluginOptions = {
   readonly path: Maybe<Scalars['String']>;
   readonly name: Maybe<Scalars['String']>;
+  readonly staticFolderName: Maybe<Scalars['String']>;
   readonly extensions: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly short_name: Maybe<Scalars['String']>;
   readonly start_url: Maybe<Scalars['String']>;
@@ -3038,6 +3041,7 @@ type SitePluginPluginOptions = {
 type SitePluginPluginOptionsFilterInput = {
   readonly path: Maybe<StringQueryOperatorInput>;
   readonly name: Maybe<StringQueryOperatorInput>;
+  readonly staticFolderName: Maybe<StringQueryOperatorInput>;
   readonly extensions: Maybe<StringQueryOperatorInput>;
   readonly short_name: Maybe<StringQueryOperatorInput>;
   readonly start_url: Maybe<StringQueryOperatorInput>;
@@ -3106,42 +3110,5 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
-
-type AllImagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllImagesQuery = { readonly images: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<File, 'name' | 'relativePath'>
-        & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }
-      ) }> } };
-
-type SkillsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SkillsQuery = { readonly images: { readonly edges: ReadonlyArray<{ readonly node: Pick<File, 'name' | 'publicURL' | 'relativeDirectory'> }> } };
-
-type DefaultSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type DefaultSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-type AllProjectsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllProjectsQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<(
-      Pick<Mdx, 'slug' | 'body'>
-      & { readonly frontmatter: Maybe<(
-        Pick<MdxFrontmatter, 'title'>
-        & { readonly feature: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }> }
-      )> }
-    )> } };
-
-type ClientImagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type ClientImagesQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
-      Pick<File, 'id'>
-      & { readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }
-    )> } };
 
 }

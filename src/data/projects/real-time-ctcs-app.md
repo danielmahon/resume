@@ -15,6 +15,10 @@ description: A real-time viewing app that integrates with CTCS (Computerized
 challenge: challenge
 solution: solution
 feature: /images/uploads/DSC_5042.jpg
+images:
+  - /images/uploads/DSC_5056.jpg
+  - /images/uploads/DSC_4976.jpg
+  - /images/uploads/DSC_4976.jpg
 videos:
   - https://www.youtube.com/embed/QSgAxLhrHL8
 ---

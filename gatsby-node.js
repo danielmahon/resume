@@ -1,7 +1,6 @@
 // const _ = require('lodash');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
-const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -42,8 +41,6 @@ exports.createPages = ({ actions, graphql }) => {
 
 exports.onCreateNode = ({ node, actions, getNode, getNodes }) => {
   const { createNodeField } = actions;
-  // convert image paths for gatsby images
-  // fmImagesToRelative(node, getNodes);
 
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode });
@@ -52,8 +49,7 @@ exports.onCreateNode = ({ node, actions, getNode, getNodes }) => {
 };
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
-  if (createTypes) {
-    createTypes(`
+  createTypes(`
     type Mdx implements Node {
       frontmatter: MdxFrontmatter
     }
@@ -61,9 +57,6 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
       description: String @mdx
       challenge: String @mdx
       solution: String @mdx
-      feature: File
-      images: [File]
     }
   `);
-  }
 };
