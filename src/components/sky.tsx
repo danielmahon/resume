@@ -46,27 +46,32 @@ export const ShootingStars = () => {
     if (ref.current === null) return;
     const controller = new AbortController();
     const sequence = async () => {
-      await delay(random(1000, 5000), { signal: controller.signal });
-      const width = ref.current?.clientWidth ?? 0;
-      const height = ref.current?.clientHeight ?? 0;
-      const left = random(0, width);
-      const top = random(0, 20);
-      const targetLeft = random(0, width);
-      const targetTop = random(height * 0.4, height * 0.75);
-      const rotation =
-        Math.atan2(targetTop - top, targetLeft - left) * (180 / Math.PI);
-
-      // reset
-      animation.set({ width: random(100, 400), left, top, rotate: rotation });
-      // animate
-      await animation.start({
-        left: targetLeft,
-        top: targetTop,
-        opacity: [0, 1, 0],
-        transition: { duration: 2 },
-      });
-      // loop
-      sequence();
+      try {
+        await delay(random(1000, 5000), { signal: controller.signal });
+        const width = ref.current?.clientWidth ?? 0;
+        const height = ref.current?.clientHeight ?? 0;
+        const left = random(0, width);
+        const top = random(0, 20);
+        const targetLeft = random(0, width);
+        const targetTop = random(height * 0.4, height * 0.75);
+        const rotation =
+          Math.atan2(targetTop - top, targetLeft - left) * (180 / Math.PI);
+        // reset
+        animation.set({ width: random(100, 400), left, top, rotate: rotation });
+        // animate
+        await animation.start({
+          left: targetLeft,
+          top: targetTop,
+          opacity: [0, 1, 0],
+          transition: { duration: 2 },
+        });
+        // loop
+        sequence();
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          throw error;
+        }
+      }
     };
     sequence();
     return () => {

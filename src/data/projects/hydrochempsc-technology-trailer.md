@@ -1,6 +1,6 @@
 ---
 layout: project
-title: HydroChemPSC Technology Trailer
+title: Technology Trailer
 subtitle: Interactive trade show exhibit that travels to your doorstep.
 date: 2020-08-25T05:58:39.837Z
 client: HydroChemPSC
@@ -30,10 +30,25 @@ solution: >-
 
   The content needed to frequently update so that they could keep their brand and message ahead of the competition. The ultimate goal was to inform, educate, and impress upon prospective customers the value of their services and advanced technology.
 feature: /images/uploads/DSC_5056.jpg
-images: []
+images:
+  - /images/uploads/DSC_5056.jpg
+  - /images/uploads/DSC_4976.jpg
+  - /images/uploads/DSC_4976.jpg
 videos:
   - https://www.youtube.com/embed/QSgAxLhrHL8
   - https://www.youtube.com/embed/gtKYLsYmGqc
   - https://www.youtube.com/embed/utmskwy-XHI
   - https://www.youtube.com/embed/XsM13dck0cA
 ---
+
+![](/images/uploads/DSC_4976.jpg)
+
+This week we’ll **take** a look at all the steps required to make astonishing coffee with a Chemex at home. The Chemex Coffeemaker is a manual, pour-over style glass-container coffeemaker that Peter Schlumbohm invented in 1941, and which continues to be manufactured by the Chemex Corporation in Chicopee, Massachusetts.
+
+![](/images/uploads/DSC_4976.jpg)
+
+In 1958, designers at the [Illinois Institute of Technology](https://www.spacefarm.digital) said that the Chemex Coffeemaker is _"one of the best-designed products of modern times"_, and so is included in the collection of the Museum of Modern Art in New York City.
+
+## The little secrets of Chemex brewing
+
+<img src="/images/uploads/DSC_5056.jpg" alt="" style="width: 100%" />

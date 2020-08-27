@@ -109,7 +109,9 @@ export const TechCloud = () => {
     <>
       <Typography tag="p" use="body1">
         Some of my most proficient technologies, software languages, and
-        programs. <i>(Click them to learn more.)</i>
+        programs.
+        <br />
+        <i>(Click them to learn more.)</i>
       </Typography>
       <ButtonSet>
         {tech.map(([word, link, Icon], i) => {

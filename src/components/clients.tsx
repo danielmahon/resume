@@ -1,38 +1,16 @@
 import React from 'react';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import { ClientImagesQuery } from '../../graphql-types';
 
 import 'swiper/swiper-bundle.min.css';
-import { useBreakpoints } from './hooks';
+import { useBreakpoints, useClientImages } from '../hooks';
 
 SwiperCore.use([Autoplay]);
 
-const query = graphql`
-  query ClientImages {
-    allFile(filter: { relativeDirectory: { eq: "clients" } }) {
-      nodes {
-        id
-        childImageSharp {
-          fluid(maxWidth: 512) {
-            base64
-            aspectRatio
-            src
-            srcSet
-            sizes
-          }
-        }
-      }
-    }
-  }
-`;
-
 export const Clients = () => {
-  const data = useStaticQuery<ClientImagesQuery>(query);
+  const nodes = useClientImages();
   const { isXsmall } = useBreakpoints();
-  const nodes = data?.allFile?.nodes;
 
   return (
     <div style={{ padding: '1rem' }}>
@@ -45,12 +23,13 @@ export const Clients = () => {
           delay: 2000,
           disableOnInteraction: false,
         }}>
-        {nodes.map(({ childImageSharp }, i) => {
-          if (!childImageSharp) return null;
+        {nodes.map((node, i) => {
+          const fluid = node.childImageSharp?.fluid;
+          if (!fluid) return null;
           return (
             <SwiperSlide key={`image-${i}`}>
               <Img
-                fluid={childImageSharp.fluid}
+                fluid={fluid as any}
                 fadeIn={false}
                 style={{ height: '100%' }}
                 imgStyle={{ objectFit: 'contain' }}

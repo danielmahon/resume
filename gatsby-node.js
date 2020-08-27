@@ -34,16 +34,16 @@ exports.createPages = ({ actions, graphql }) => {
         // tags: edge.node.frontmatter.tags,
         component: path.resolve(`src/layouts/${node.frontmatter.layout}.tsx`),
         // additional data can be passed via context
-        context: { id: node.id },
+        context: { id: node.id, layout: node.frontmatter.layout },
       });
     });
   });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions, getNode, getNodes }) => {
   const { createNodeField } = actions;
   // convert image paths for gatsby images
-  fmImagesToRelative(node);
+  // fmImagesToRelative(node, getNodes);
 
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode });
@@ -52,7 +52,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 };
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
-  createTypes(`
+  if (createTypes) {
+    createTypes(`
     type Mdx implements Node {
       frontmatter: MdxFrontmatter
     }
@@ -60,6 +61,9 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
       description: String @mdx
       challenge: String @mdx
       solution: String @mdx
+      feature: File
+      images: [File]
     }
   `);
+  }
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import {
   GridList,
@@ -9,11 +9,18 @@ import {
   GridTileTitle,
 } from '@rmwc/grid-list';
 
-import { ProjectLinksQuery } from '../../graphql-types';
 import styled from 'styled-components';
-import { Button } from '@rmwc/button';
+import { useAllProjects } from '../hooks';
 
 const StyledGridTile = styled(GridTile)`
+  .gatsby-image-wrapper {
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  .mdc-grid-tile__secondary {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
   &&& {
     width: 100%;
     @media screen and (min-width: 600px) {
@@ -25,32 +32,8 @@ const StyledGridTile = styled(GridTile)`
   }
 ` as typeof GridTile;
 
-const getProjectLinks = graphql`
-  query ProjectLinks {
-    allMdx {
-      nodes {
-        slug
-        frontmatter {
-          feature {
-            childImageSharp {
-              fluid(maxWidth: 1280) {
-                base64
-                aspectRatio
-                src
-                srcSet
-                sizes
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 export const Projects = () => {
-  const data = useStaticQuery<ProjectLinksQuery>(getProjectLinks);
-  const projects = data.allMdx.nodes;
+  const projects = useAllProjects();
 
   return (
     <GridList tileAspect="4x3">
@@ -61,28 +44,14 @@ export const Projects = () => {
 
         return (
           <StyledGridTile key={project.slug}>
-            <Link to={project.slug}>
+            <Link
+              to={project.slug}
+              state={{ prevPath: window.location.pathname }}>
               <GridTilePrimary>
                 <Img fluid={fluid as any} />
               </GridTilePrimary>
-              <GridTileSecondary
-                style={{
-                  padding: '0 1rem',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                }}>
-                <GridTileTitle style={{ lineHeight: '48px' }}>
-                  Project: Technology Trailer
-                </GridTileTitle>
-                <GridTileTitle style={{ lineHeight: '48px' }}>
-                  <Button
-                    style={{ borderColor: 'white', lineHeight: '1rem' }}
-                    outlined
-                    dense
-                    theme="onPrimary">
-                    Learn more
-                  </Button>
-                </GridTileTitle>
+              <GridTileSecondary>
+                <GridTileTitle>{project.frontmatter?.title}</GridTileTitle>
               </GridTileSecondary>
             </Link>
           </StyledGridTile>

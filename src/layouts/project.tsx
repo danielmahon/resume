@@ -6,15 +6,15 @@ import { Grid, GridCell } from '@rmwc/grid';
 import { Button } from '@rmwc/button';
 import { Typography, TypographyProps } from '@rmwc/typography';
 import { HTMLProps } from '@rmwc/types';
-import { Layout } from '../components/layout';
 import { SEO } from '../components/seo';
-import { ProjectQuery } from '../../graphql-types';
+// import { ProjectQuery } from '../../graphql-types';
+import type {} from 'gatsby-plugin-typegen/types';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Img from 'gatsby-image';
 
 export type ProjectTemplateArgs = {
-  data: ProjectQuery;
+  data: GatsbyTypes.ProjectQuery;
 };
 
 const HeroImage = styled.div`
@@ -77,12 +77,12 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
   const body = data.mdx?.body ?? '';
 
   return (
-    <Layout secondary>
+    <>
       <MDXProvider components={{ h2: Headline2, p: Paragraph }}>
         <SEO title={title} />
         <Grid>
           <GridCell span={12}>
-            <Button onClick={() => navigate('/#work')} icon="arrow_back">
+            <Button onClick={() => navigate(-1)} icon="arrow_back">
               Back
             </Button>
             <Title>{title}</Title>
@@ -147,13 +147,13 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
             );
           })}
           <GridCell span={12}>
-            <Button onClick={() => navigate('/#work')} icon="arrow_back">
+            <Button onClick={() => navigate(-1)} icon="arrow_back">
               Back
             </Button>
           </GridCell>
         </Grid>
       </MDXProvider>
-    </Layout>
+    </>
   );
 };
 

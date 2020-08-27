@@ -6,7 +6,6 @@ import { Button } from '@rmwc/button';
 import styled from 'styled-components';
 import { Element } from 'react-scroll';
 
-import { Layout } from '../components/layout';
 import { Clients } from '../components/clients';
 import { Image } from '../components/image';
 import { SEO } from '../components/seo';
@@ -41,7 +40,7 @@ const Avatar = styled.div`
 
 const IndexPage = () => {
   return (
-    <Layout>
+    <>
       <SEO
         exact={true}
         title="Daniel Mahon"
@@ -165,14 +164,22 @@ const IndexPage = () => {
           </GridCell>
         </About>
       </AboutWrapper>
-      <Element name="work" />
       <Grid>
         <GridCell span={12}>
           <Clients />
         </GridCell>
       </Grid>
-      <Grid>
+      <Element name="projects" />
+      <Grid
+        style={{
+          textAlign: 'center',
+          backgroundColor: '#f1f1f1',
+          paddingBottom: '4rem',
+        }}>
         <GridCell span={12}>
+          <Typography use="headline4" tag="p">
+            PROJECTS
+          </Typography>
           <Projects />
         </GridCell>
       </Grid>
@@ -197,6 +204,7 @@ const IndexPage = () => {
           <TechCloud />
         </GridCell>
       </Grid>
+      <Element name="work" />
       <Grid>
         <GridCell span={4} style={{ textAlign: 'center' }}>
           <Typography use="headline4" tag="p">
@@ -336,11 +344,15 @@ const IndexPage = () => {
           </Typography>
         </GridCell>
         <GridCell span={8}>
-          <Typography use="headline5" tag="p">
+          <Typography use="headline5">
             Brian Walters
             <br />
-            <Typography use="body1">
+            <Typography use="body1" tag="p">
               Chief Creative Officer | Communications Exhibits, Inc.
+              <br />
+              <Typography use="caption">
+                (See print resumé for phone number)
+              </Typography>
             </Typography>
           </Typography>
           <Button
@@ -352,11 +364,15 @@ const IndexPage = () => {
             LinkedIn Profile
           </Button>
           <hr />
-          <Typography use="headline5" tag="p">
+          <Typography use="headline5">
             Linda Wenger
             <br />
-            <Typography use="body1">
+            <Typography use="body1" tag="p">
               Sr. VP, Marketing and Communications | LUNGevity Foundation
+              <br />
+              <Typography use="caption">
+                (See print resumé for phone number)
+              </Typography>
             </Typography>
           </Typography>
           <Button
@@ -369,11 +385,15 @@ const IndexPage = () => {
           </Button>
           <Typography use="body1" tag="p"></Typography>
           <hr />
-          <Typography use="headline5" tag="p">
+          <Typography use="headline5">
             Jared Singer
             <br />
-            <Typography use="body1">
+            <Typography use="body1" tag="p">
               Director | MEP - PRIME AE Group, Inc.
+              <br />
+              <Typography use="caption">
+                (See print resumé for phone number)
+              </Typography>
             </Typography>
           </Typography>
           <Button
@@ -438,7 +458,7 @@ const IndexPage = () => {
           </Typography>
         </GridCell>
       </Grid>
-    </Layout>
+    </>
   );
 };
 

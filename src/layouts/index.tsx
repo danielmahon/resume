@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import FontFaceObserver from 'fontfaceobserver';
 import { ThemeProvider as RMWCThemeProvider } from '@rmwc/theme';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { motion } from 'framer-motion';
 
-import { Header } from './header';
-import { Footer } from './footer';
-import { SEO } from './seo';
+import { Header } from '../components/header';
+import { Footer } from '../components/footer';
+import { SEO } from '../components/seo';
 
 // Import styles
 import 'normalize.css';
@@ -25,8 +25,8 @@ import '@rmwc/icon-button/styles';
 import '@rmwc/chip/styles';
 
 // Import custom styles
-import './layout.css';
-import { useBreakpoints } from './hooks';
+import './index.css';
+import { useBreakpoints } from '../hooks';
 
 const options = {
   primary: 'rgba(56, 139, 154, 1.00)',
@@ -47,7 +47,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
     Promise.all([fontA.load(), fontB.load()]).then(() => {
       setReady(true);
     });
-  }, []);
+  }, [setReady]);
 
   return (
     <StyledThemeProvider theme={{ ...options, ...breakpoints }}>
@@ -64,7 +64,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
           <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
         </SEO>
         <motion.div animate={{ opacity: ready ? 1 : 0 }}>
-          {!secondary && <Header />}
+          <Header secondary={secondary} />
           <main>{children}</main>
           <Footer />
         </motion.div>

@@ -10,7 +10,7 @@ import { motion, Variants, useAnimation } from 'framer-motion';
 import { Sky } from './sky';
 import delay from 'delay';
 import { SocialIcons } from './social-icons';
-import { useBreakpoints } from './hooks';
+import { useBreakpoints } from '../hooks/useBreakpoints';
 
 const StyledHeadroom = styled(Headroom)`
   position: absolute;
@@ -138,17 +138,15 @@ const titleVariants: Variants = {
   },
 };
 
-export const Header = () => {
+export const Header = ({ secondary }) => {
   const headerControls = useAnimation();
   const titleControls = useAnimation();
   const subtitleControls = useAnimation();
   const [title, setTitle] = useState(Array.from(`Hello there,`));
   const { isXsmall } = useBreakpoints();
-  const [shown, setShown] = useState(false);
 
   // Intro animation
   useEffect(() => {
-    if (shown) return;
     (async () => {
       await delay(1000);
       await titleControls.start(TitleStates.SHOWN);
@@ -162,12 +160,11 @@ export const Header = () => {
         transition: { duration: 1 },
       });
       await headerControls.start(TitleStates.SHOWN);
-      setShown(true);
     })();
-  }, [shown, titleControls, subtitleControls, headerControls, setTitle]);
+  }, [titleControls, subtitleControls, headerControls, setTitle]);
 
   return (
-    <header>
+    <header style={{ display: secondary ? 'none' : 'block' }}>
       <StyledHeadroom>
         <TopAppBar>
           <TopAppBarRow>
@@ -191,18 +188,18 @@ export const Header = () => {
                   About
                 </Button>
                 <Button
-                  onClick={() => scroller.scrollTo('work', { smooth: true })}>
-                  Work
+                  onClick={() =>
+                    scroller.scrollTo('projects', { smooth: true })
+                  }>
+                  Projects
                 </Button>
                 <Button
                   onClick={() => scroller.scrollTo('skills', { smooth: true })}>
                   Skills
                 </Button>
                 <Button
-                  onClick={() =>
-                    scroller.scrollTo('education', { smooth: true })
-                  }>
-                  Education
+                  onClick={() => scroller.scrollTo('work', { smooth: true })}>
+                  Work
                 </Button>
                 <Button
                   onClick={() =>

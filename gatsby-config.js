@@ -6,12 +6,8 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-typescript`,
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        documentPaths: ['./src/**/*.{ts,tsx}'],
-      },
-    },
+    // `gatsby-plugin-layout`,
+    `gatsby-plugin-typegen`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
@@ -36,8 +32,8 @@ module.exports = {
         name: 'images',
       },
     },
-    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-mdx-frontmatter`,
     {
       resolve: `gatsby-plugin-mdx`,
