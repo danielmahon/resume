@@ -7,18 +7,18 @@ const React = require('react');
 const { store, StoreProvider } = require('./src/store');
 const { Layout } = require('./src/layouts');
 
-export const shouldUpdateScroll = ({ prevRouterProps, routerProps }) => {
+exports.shouldUpdateScroll = ({ prevRouterProps, routerProps }) => {
   if (!prevRouterProps) {
     window.scrollTo(0, 0);
     return false;
   }
 };
 
-export const wrapRootElement = ({ element }) => {
+exports.wrapRootElement = ({ element }) => {
   return <StoreProvider store={store}>{element}</StoreProvider>;
 };
 
-export const wrapPageElement = ({ element, props }) => {
+exports.wrapPageElement = ({ element, props }) => {
   // props provide same data to Layout as Page element will get
   // including location, data, etc - you don't need to pass it
   const secondary = typeof props.pageContext?.layout === 'string';

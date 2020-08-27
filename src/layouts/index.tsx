@@ -50,11 +50,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
   }, [setReady]);
 
   return (
-    <StyledThemeProvider theme={{ ...options, ...breakpoints }}>
-      <RMWCThemeProvider
-        id="theme"
-        className={ready ? 'fonts-loaded' : ''}
-        options={options}>
+    <RMWCThemeProvider options={options}>
+      <StyledThemeProvider theme={{ ...options, ...breakpoints }}>
         <SEO bodyAttributes={{ class: 'mdc-typography' }}>
           <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -68,7 +65,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
           <main>{children}</main>
           <Footer />
         </motion.div>
-      </RMWCThemeProvider>
-    </StyledThemeProvider>
+      </StyledThemeProvider>
+    </RMWCThemeProvider>
   );
 };
