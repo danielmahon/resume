@@ -698,6 +698,9 @@ enum FileFieldsEnum {
   childMdx___frontmatter___description = 'childMdx.frontmatter.description',
   childMdx___frontmatter___challenge = 'childMdx.frontmatter.challenge',
   childMdx___frontmatter___solution = 'childMdx.frontmatter.solution',
+  childMdx___frontmatter___challenges = 'childMdx.frontmatter.challenges',
+  childMdx___frontmatter___challenges___label = 'childMdx.frontmatter.challenges.label',
+  childMdx___frontmatter___challenges___content = 'childMdx.frontmatter.challenges.content',
   childMdx___frontmatter___layout = 'childMdx.frontmatter.layout',
   childMdx___frontmatter___subtitle = 'childMdx.frontmatter.subtitle',
   childMdx___frontmatter___date = 'childMdx.frontmatter.date',
@@ -1530,6 +1533,9 @@ enum MdxFieldsEnum {
   frontmatter___description = 'frontmatter.description',
   frontmatter___challenge = 'frontmatter.challenge',
   frontmatter___solution = 'frontmatter.solution',
+  frontmatter___challenges = 'frontmatter.challenges',
+  frontmatter___challenges___label = 'frontmatter.challenges.label',
+  frontmatter___challenges___content = 'frontmatter.challenges.content',
   frontmatter___layout = 'frontmatter.layout',
   frontmatter___subtitle = 'frontmatter.subtitle',
   frontmatter___date = 'frontmatter.date',
@@ -1792,6 +1798,7 @@ type MdxFrontmatter = {
   readonly description: Maybe<Scalars['String']>;
   readonly challenge: Maybe<Scalars['String']>;
   readonly solution: Maybe<Scalars['String']>;
+  readonly challenges: Maybe<ReadonlyArray<Maybe<MdxFrontmatterChallenge>>>;
   readonly layout: Maybe<Scalars['String']>;
   readonly subtitle: Maybe<Scalars['String']>;
   readonly date: Maybe<Scalars['Date']>;
@@ -1810,11 +1817,26 @@ type MdxFrontmatter_dateArgs = {
   locale: Maybe<Scalars['String']>;
 };
 
+type MdxFrontmatterChallenge = {
+  readonly label: Maybe<Scalars['String']>;
+  readonly content: Maybe<Scalars['String']>;
+};
+
+type MdxFrontmatterChallengeFilterInput = {
+  readonly label: Maybe<StringQueryOperatorInput>;
+  readonly content: Maybe<StringQueryOperatorInput>;
+};
+
+type MdxFrontmatterChallengeFilterListInput = {
+  readonly elemMatch: Maybe<MdxFrontmatterChallengeFilterInput>;
+};
+
 type MdxFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
   readonly challenge: Maybe<StringQueryOperatorInput>;
   readonly solution: Maybe<StringQueryOperatorInput>;
+  readonly challenges: Maybe<MdxFrontmatterChallengeFilterListInput>;
   readonly layout: Maybe<StringQueryOperatorInput>;
   readonly subtitle: Maybe<StringQueryOperatorInput>;
   readonly date: Maybe<DateQueryOperatorInput>;
@@ -3102,7 +3124,7 @@ type ProjectQuery = { readonly mdx: Maybe<(
     Pick<Mdx, 'id' | 'body'>
     & { readonly frontmatter: Maybe<(
       Pick<MdxFrontmatter, 'date' | 'title' | 'subtitle' | 'client' | 'roles' | 'description' | 'challenge' | 'solution' | 'videos'>
-      & { readonly feature: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }>, readonly images: Maybe<ReadonlyArray<Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }>>> }
+      & { readonly challenges: Maybe<ReadonlyArray<Maybe<Pick<MdxFrontmatterChallenge, 'label' | 'content'>>>>, readonly feature: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }>, readonly images: Maybe<ReadonlyArray<Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }>>> }
     )> }
   )> };
 

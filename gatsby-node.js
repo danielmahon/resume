@@ -39,12 +39,18 @@ exports.createPages = ({ actions, graphql }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions, getNode, getNodes }) => {
+exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode });
     createNodeField({ name: `slug`, node, value });
+  }
+};
+
+exports.onCreatePage = ({ page }) => {
+  if (page.path.startsWith('/404')) {
+    page.layout = '404';
   }
 };
 
@@ -57,6 +63,11 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
       description: String @mdx
       challenge: String @mdx
       solution: String @mdx
+      challenges: [MdxFrontmatterChallenge]
+    }
+    type MdxFrontmatterChallenge {
+      label: String
+      content: String @mdx
     }
   `);
 };

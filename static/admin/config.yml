@@ -26,19 +26,28 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Subtitle', name: 'subtitle', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Tags', name: 'tags', widget: 'list', required: false }
       - { label: 'Client', name: 'client', widget: 'string' }
       - { label: 'Roles', name: 'roles', widget: 'list' }
       - { label: 'Description', name: 'description', widget: 'markdown' }
       - { label: 'Challenge', name: 'challenge', widget: 'markdown' }
       - { label: 'Solution', name: 'solution', widget: 'markdown' }
       - { label: 'Featured Image', name: 'feature', widget: 'image' }
+      - label: 'Challenges'
+        name: 'challenges'
+        widget: 'list'
+        required: false
+        fields:
+          - { label: 'Label', name: 'label', widget: 'string' }
+          - { label: 'Content', name: 'content', widget: 'markdown' }
       - label: 'Images'
         name: 'images'
         widget: 'list'
+        required: false
         field: { label: 'Image', name: 'image', widget: 'image' }
       - label: 'Videos'
         name: 'videos'
         widget: 'list'
         required: false
+        field: { label: 'Video', name: 'video', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown', required: false }
+      - { label: 'Tags', name: 'tags', widget: 'list', required: false }

@@ -39,4 +39,5 @@ main {
 [data-rmiz-wrap='visible'],
 [data-rmiz-wrap='hidden'] {
   display: block;
+  /* height: 100%; */
 }

@@ -25,6 +25,8 @@ import '@rmwc/dialog/styles';
 import '@rmwc/elevation/styles';
 import '@rmwc/icon-button/styles';
 import '@rmwc/chip/styles';
+import '@rmwc/checkbox/styles';
+import '@rmwc/list/styles';
 
 // Import custom styles
 import './index.css';
@@ -49,8 +51,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
       setReady(true);
     });
   }, [setReady]);
-
-  console.log(ready);
 
   return (
     <RMWCThemeProvider options={options}>

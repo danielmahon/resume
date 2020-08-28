@@ -6,6 +6,7 @@
 const React = require('react');
 const { store, StoreProvider } = require('./src/store');
 const { Layout } = require('./src/layouts');
+const { Simple } = require('./src/layouts/simple');
 
 exports.shouldUpdateScroll = ({ prevRouterProps, routerProps }) => {
   if (!prevRouterProps) {
@@ -21,15 +22,17 @@ exports.wrapRootElement = ({ element }) => {
 exports.wrapPageElement = ({ element, props, ...rest }) => {
   // props provide same data to Layout as Page element will get
   // including location, data, etc - you don't need to pass it
-  let secondary = typeof props.pageContext?.layout === 'string';
 
-  if (element.key === '/404.html') {
-    secondary = true;
+  switch (props.pageContext.layout) {
+    case '404':
+      return <Simple {...props}>{element}</Simple>;
+    case 'project':
+      return (
+        <Layout secondary={true} {...props}>
+          {element}
+        </Layout>
+      );
+    default:
+      return <Layout {...props}>{element}</Layout>;
   }
-
-  return (
-    <Layout secondary={secondary} {...props}>
-      {element}
-    </Layout>
-  );
 };

@@ -4,20 +4,23 @@ import { SEO } from '../components/seo';
 import { Grid, GridCell } from '@rmwc/grid';
 import { Link } from 'gatsby';
 import { Button } from '@rmwc/button';
+import styled from 'styled-components';
 
-export default () => (
+const Image = styled.img`
+  display: block;
+  margin: 0 auto;
+  height: 250px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+`;
+
+const PageNotFound = () => (
   <Grid>
     <GridCell span={12}>
-      <div style={{ minWidth: 250, height: 250 }}>
-        <iframe
-          title="lost gif"
-          src="https://giphy.com/embed/3o7aCTPPm4OHfRLSH6"
-          width="100%"
-          height="100%"
-          // style={{ position: 'absolute' }}
-          frameBorder="0"
-          allowFullScreen></iframe>
-      </div>
+      <Image
+        alt="404 gif"
+        src="https://media.giphy.com/media/3o7aCTPPm4OHfRLSH6/giphy.gif"
+      />
     </GridCell>
     <GridCell span={12} style={{ textAlign: 'center' }}>
       <SEO title="404: Not found" />
@@ -29,3 +32,5 @@ export default () => (
     </GridCell>
   </Grid>
 );
+
+export default PageNotFound;
