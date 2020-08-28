@@ -11,7 +11,8 @@ import { SEO } from '../components/seo';
 import type {} from 'gatsby-plugin-typegen/types';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Img from 'gatsby-image';
+import Img, { GatsbyImageProps } from 'gatsby-image';
+import Zoom from 'react-medium-image-zoom';
 
 export type ProjectTemplateArgs = {
   data: GatsbyTypes.ProjectQuery;
@@ -19,12 +20,16 @@ export type ProjectTemplateArgs = {
 
 const HeroImage = styled.div`
   .gatsby-image-wrapper {
-    border-radius: 0.25rem;
-    overflow: hidden;
     height: 0;
     padding-top: 56.25%;
   }
 `;
+
+const Image = styled(Img)<GatsbyImageProps>`
+  border-radius: 0.5rem;
+  overflow: hidden;
+`;
+
 const Title = styled(Typography).attrs({ tag: 'h1', use: 'div' })<
   TypographyProps & HTMLProps
 >`
@@ -61,6 +66,10 @@ const Paragraph = styled(({ children, ...props }) => (
   max-width: 700px;
   margin: 1rem auto;
 `;
+const StyledImg = styled(({ alt, ...props }) => <img alt={alt} {...props} />)`
+  border-radius: 0.5rem;
+  overflow: hidden;
+`;
 
 const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
   const frontmatter = data.mdx?.frontmatter;
@@ -78,7 +87,7 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
 
   return (
     <>
-      <MDXProvider components={{ h2: Headline2, p: Paragraph }}>
+      <MDXProvider components={{ h2: Headline2, p: Paragraph, img: StyledImg }}>
         <SEO title={title} />
         <Grid>
           <GridCell span={12}>
@@ -95,11 +104,15 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
               <b>Roles:</b> {roles.join(' • ')}
             </Paragraph>
           </GridCell>
-          <GridCell span={12} style={{ textAlign: 'center' }}>
-            <HeroImage>
-              <Img fluid={feature as any} />
-            </HeroImage>
-          </GridCell>
+          {!!feature && (
+            <GridCell span={12} style={{ textAlign: 'center' }}>
+              <HeroImage>
+                <Zoom>
+                  <Image fluid={feature} />
+                </Zoom>
+              </HeroImage>
+            </GridCell>
+          )}
           <GridCell span={12}>
             <Subtitle>DESCRIPTION</Subtitle>
             <MDXRenderer>{description}</MDXRenderer>
@@ -113,7 +126,9 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
             if (!fluid) return null;
             return (
               <GridCell span={4} key={`image-${i}`}>
-                <Img fluid={fluid as any} />
+                <Zoom>
+                  <Image fluid={fluid} />
+                </Zoom>
               </GridCell>
             );
           })}
@@ -142,7 +157,7 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
             if (!fluid) return null;
             return (
               <GridCell span={4} key={`image-${i}`}>
-                <Img fluid={fluid as any} />
+                <Image fluid={fluid} />
               </GridCell>
             );
           })}

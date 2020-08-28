@@ -18,10 +18,15 @@ exports.wrapRootElement = ({ element }) => {
   return <StoreProvider store={store}>{element}</StoreProvider>;
 };
 
-exports.wrapPageElement = ({ element, props }) => {
+exports.wrapPageElement = ({ element, props, ...rest }) => {
   // props provide same data to Layout as Page element will get
   // including location, data, etc - you don't need to pass it
-  const secondary = typeof props.pageContext?.layout === 'string';
+  let secondary = typeof props.pageContext?.layout === 'string';
+
+  if (element.key === '/404.html') {
+    secondary = true;
+  }
+
   return (
     <Layout secondary={secondary} {...props}>
       {element}

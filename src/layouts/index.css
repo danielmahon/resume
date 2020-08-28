@@ -24,6 +24,7 @@ main {
   height: 0;
   overflow: hidden;
   max-width: 100%;
+  border-radius: 0.5rem;
 }
 .embed-container iframe,
 .embed-container object,
@@ -33,4 +34,9 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+[data-rmiz-wrap='visible'],
+[data-rmiz-wrap='hidden'] {
+  display: block;
 }

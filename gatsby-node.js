@@ -25,9 +25,9 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
 
-    const posts = result.data.allMdx.edges;
+    const pages = result.data.allMdx.edges;
 
-    posts.forEach(({ node }) => {
+    pages.forEach(({ node }) => {
       createPage({
         path: node.slug,
         // tags: edge.node.frontmatter.tags,

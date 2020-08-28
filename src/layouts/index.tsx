@@ -7,11 +7,13 @@ import { motion } from 'framer-motion';
 import { Header } from '../components/header';
 import { Footer } from '../components/footer';
 import { SEO } from '../components/seo';
+import { useBreakpoints } from '../hooks';
 
 // Import styles
 import 'normalize.css';
 import 'typeface-roboto';
 import 'typeface-open-sans';
+import 'react-medium-image-zoom/dist/styles.css';
 
 import '@rmwc/theme/styles';
 import '@rmwc/typography/styles';
@@ -26,7 +28,6 @@ import '@rmwc/chip/styles';
 
 // Import custom styles
 import './index.css';
-import { useBreakpoints } from '../hooks';
 
 const options = {
   primary: 'rgba(56, 139, 154, 1.00)',
@@ -49,6 +50,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
     });
   }, [setReady]);
 
+  console.log(ready);
+
   return (
     <RMWCThemeProvider options={options}>
       <StyledThemeProvider theme={{ ...options, ...breakpoints }}>
@@ -60,7 +63,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, secondary }) => {
           {/* Netlify Identity Widget */}
           <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
         </SEO>
-        <motion.div animate={{ opacity: ready ? 1 : 0 }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: ready ? 1 : 0 }}>
           <Header secondary={secondary} />
           <main>{children}</main>
           <Footer />
