@@ -20,17 +20,21 @@ export type ProjectTemplateArgs = {
   data: GatsbyTypes.ProjectQuery;
 };
 
-const HeroImage = styled.div`
-  .gatsby-image-wrapper {
-    height: 0;
-    padding-top: 56.25%;
-  }
-`;
-
-const Image = styled(Img)<GatsbyImageProps>`
+const HeroImage = styled(Img)<GatsbyImageProps>`
+  height: 0;
+  padding-top: 56.25%;
   border-radius: 0.5rem;
   overflow: hidden;
-  /* height: 100%; */
+`;
+
+const Image = styled(Img).attrs({
+  imgStyle: { objectFit: 'contain' },
+})<GatsbyImageProps & HTMLProps>`
+  border-radius: 0.5rem;
+  overflow: hidden;
+  img {
+    background-color: black;
+  }
 `;
 
 const Title = styled(Typography).attrs({ tag: 'h1', use: 'div' })<
@@ -74,11 +78,6 @@ const StyledImg = styled.img`
   overflow: hidden;
 `;
 
-// const UnorderedList = styled.div`
-//   max-width: 700px;
-//   margin: 1em auto;
-//   padding: 0;
-// `;
 const StyledList = styled(List)<ListProps & HTMLProps>`
   --mdc-theme-secondary: var(--mdc-theme-primary);
   display: block;
@@ -91,14 +90,23 @@ const StyledList = styled(List)<ListProps & HTMLProps>`
   .mdc-list-item {
     font-weight: bold;
   }
-  > ul {
-    margin: 1rem 0 1rem 1rem;
-    padding: 0 1rem;
+  /* ul {
+    max-width: 700px;
+    margin: 0 auto;
+  } */
+`;
+
+const StyledGrid = styled(Grid)`
+  ul.mdx {
+    max-width: 700px;
+    margin: 1rem auto;
     li {
       list-style-type: disc;
+      margin: 0.5rem;
     }
     ul {
       padding-left: 1rem;
+      margin: 0.5rem;
       li {
         list-style-type: circle;
       }
@@ -106,19 +114,12 @@ const StyledList = styled(List)<ListProps & HTMLProps>`
   }
 `;
 
-// const ListItem = styled(Checkbox)<CheckboxProps & HTMLProps>`
-//   --mdc-theme-secondary: var(--mdc-theme-primary);
-//   display: block;
-//   label {
-//     line-height: 40px;
-//     font-size: 1rem;
-//   }
-// `;
-
 const components = {
   h2: Headline2,
   p: Paragraph,
   img: StyledImg,
+  ul: (props) => <ul className="mdx" {...props} />,
+  li: (props) => <li className="mdx" {...props} />,
 };
 
 const shortcodes = {
@@ -145,7 +146,7 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
   return (
     <MDXProvider components={{ ...components, ...shortcodes }}>
       <SEO title={title} />
-      <Grid>
+      <StyledGrid>
         <GridCell span={12}>
           <Button onClick={() => navigate(-1)} icon="arrow_back">
             Back
@@ -162,11 +163,9 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
         </GridCell>
         {!!feature && (
           <GridCell span={12} style={{ textAlign: 'center' }}>
-            <HeroImage>
-              <Zoom>
-                <Image fluid={feature} />
-              </Zoom>
-            </HeroImage>
+            <Zoom>
+              <HeroImage fluid={feature} />
+            </Zoom>
           </GridCell>
         )}
         <GridCell span={12}>
@@ -200,17 +199,17 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
         <GridCell span={12}>
           <Subtitle>Solution</Subtitle>
           <MDXRenderer>{solution}</MDXRenderer>
-          <StyledList nonInteractive>
-            {challenges.map((item, i) => (
-              <Fragment key={`solution-${i}`}>
+          {challenges.map((item, i) => (
+            <Fragment key={`solution-${i}`}>
+              <StyledList nonInteractive>
                 <ListItem disabled>
                   <ListItemGraphic icon={<Checkbox checked />} />
                   {item?.label}
                 </ListItem>
-                <MDXRenderer>{item?.content ?? ''}</MDXRenderer>
-              </Fragment>
-            ))}
-          </StyledList>
+              </StyledList>
+              <MDXRenderer>{item?.content ?? ''}</MDXRenderer>
+            </Fragment>
+          ))}
           <MDXRenderer>{body}</MDXRenderer>
         </GridCell>
         {videos.map((src, i) => {
@@ -244,6 +243,7 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
                   style={{ marginBottom: '1rem' }}>
                   <Zoom>
                     <Image fluid={fluid} />
+                    {/* <ImageListImage src={image?.publicURL} /> */}
                   </Zoom>
                 </ImageListItem>
               );
@@ -256,7 +256,7 @@ const ProjectTemplate: React.FC<ProjectTemplateArgs> = ({ data }) => {
             Back
           </Button>
         </GridCell>
-      </Grid>
+      </StyledGrid>
     </MDXProvider>
   );
 };
@@ -280,6 +280,7 @@ export const pageQuery = graphql`
         }
         solution
         feature {
+          publicURL
           childImageSharp {
             fluid(maxWidth: 1280) {
               base64
@@ -291,6 +292,7 @@ export const pageQuery = graphql`
           }
         }
         images {
+          publicURL
           childImageSharp {
             fluid(maxWidth: 1280) {
               base64

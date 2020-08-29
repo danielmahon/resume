@@ -1,22 +1,21 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import Img, { GatsbyImageProps } from 'gatsby-image';
 import {
   GridList,
   GridTile,
   GridTilePrimary,
   GridTileSecondary,
   GridTileTitle,
+  GridTileProps,
 } from '@rmwc/grid-list';
 
 import styled from 'styled-components';
 import { useAllProjects } from '../hooks';
+import { HTMLProps } from '@rmwc/types';
 
-const StyledGridTile = styled(GridTile)`
-  .gatsby-image-wrapper {
-    border-radius: 0.5rem;
-    overflow: hidden;
-  }
+const StyledGridTile = styled(GridTile)<GridTileProps & HTMLProps>`
+  /* margin: 1rem; */
   .mdc-grid-tile__secondary {
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -30,7 +29,14 @@ const StyledGridTile = styled(GridTile)`
       width: calc(33% - 2px);
     }
   }
-` as typeof GridTile;
+`;
+
+const Image = styled(Img)<GatsbyImageProps>`
+  height: inherit;
+  padding-bottom: inherit;
+  border-radius: 0.5rem;
+  overflow: hidden;
+`;
 
 export const Projects = () => {
   const projects = useAllProjects();
@@ -46,7 +52,7 @@ export const Projects = () => {
           <StyledGridTile key={project.slug}>
             <Link to={project.slug}>
               <GridTilePrimary>
-                <Img fluid={fluid as any} />
+                <Image fluid={fluid} />
               </GridTilePrimary>
               <GridTileSecondary>
                 <GridTileTitle>{project.frontmatter?.title}</GridTileTitle>

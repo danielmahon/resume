@@ -6,10 +6,17 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-typescript`,
-    // `gatsby-plugin-layout`,
     `gatsby-plugin-typegen`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    // {
+    //   resolve: 'gatsby-plugin-react-svg',
+    //   options: {
+    //     rule: {
+    //       include: /\.inline\.svg$/,
+    //     },
+    //   },
+    // },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',

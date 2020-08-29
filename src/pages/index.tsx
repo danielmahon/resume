@@ -178,7 +178,7 @@ const IndexPage = () => {
         }}>
         <GridCell span={12}>
           <Typography use="headline4" tag="p">
-            PROJECTS
+            RECENT PROJECTS
           </Typography>
           <Projects />
         </GridCell>
@@ -337,7 +337,7 @@ const IndexPage = () => {
         </GridCell>
       </Grid>
 
-      <Grid>
+      {/* <Grid>
         <GridCell span={4} style={{ textAlign: 'center' }}>
           <Typography use="headline4" tag="p">
             REFERENCES
@@ -405,7 +405,7 @@ const IndexPage = () => {
             LinkedIn Profile
           </Button>
         </GridCell>
-      </Grid>
+      </Grid> */}
       <Element name="education" />
       <Grid>
         <GridCell span={4} style={{ textAlign: 'center' }}>

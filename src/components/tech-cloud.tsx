@@ -37,8 +37,10 @@ import {
   SiDocker,
   SiTrello,
 } from 'react-icons/si';
-import { BiPyramid } from 'react-icons/bi';
 import { Button } from '@rmwc/button';
+
+// import BalenaIcon from '../images/svgs/balena.inline.svg';
+// import PrismaIcon from '../images/svgs/prisma.inline.svg';
 
 const tech: [string, string?, IconType?][] = [
   ['Typescript', 'https://www.typescriptlang.org/', SiTypescript],
@@ -48,6 +50,7 @@ const tech: [string, string?, IconType?][] = [
   ['ReactJS', 'https://reactjs.org/', SiReact],
   ['GatsbyJS', 'https://www.gatsbyjs.com/', SiGatsby],
   ['Docker', 'https://www.docker.com/', SiDocker],
+  // ['Balena', 'https://www.balena.io/', BalenaIcon],
   ['Adobe Creative Cloud', 'https://www.adobe.com/creativecloud.html', SiAdobe],
   ['Material Design', 'https://material.io/', SiMaterialdesign],
   ['Unity', 'https://unity.com/', SiUnity],
@@ -71,7 +74,7 @@ const tech: [string, string?, IconType?][] = [
   ['Heroku', 'https://www.heroku.com/home', SiHeroku],
   ['DigitalOcean', 'https://www.digitalocean.com/', SiDigitalocean],
   ['GraphQL', 'https://graphql.org/', SiGraphql],
-  ['Prisma', 'https://www.prisma.io/', BiPyramid],
+  // ['Prisma', 'https://www.prisma.io/', PrismaIcon],
   ['MongoDB', 'https://www.mongodb.com/', SiMongodb],
   ['PostgreSQL', 'https://www.postgresql.org/', SiPostgresql],
   ['MySQL', 'https://www.mysql.com/', SiMysql],
@@ -121,6 +124,7 @@ export const TechCloud = () => {
               disabled={i === tech.length - 1}
               icon={icon}
               style={{
+                fill: 'white',
                 color: 'white',
                 backgroundColor: lighten(
                   0 + i * 0.018,
