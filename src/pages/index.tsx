@@ -13,7 +13,6 @@ import { Skills } from '../components/skills';
 import { TechCloud } from '../components/tech-cloud';
 import { SocialIcons } from '../components/social-icons';
 import { Projects } from '../components/projects';
-import { SiLinkedin } from 'react-icons/si';
 
 const About = styled(Grid)`
   color: white;
@@ -181,6 +180,9 @@ const IndexPage = () => {
             RECENT PROJECTS
           </Typography>
           <Projects />
+          <Typography use="body1" tag="p">
+            MORE PROJECTS COMING SOON...
+          </Typography>
         </GridCell>
       </Grid>
       <Element name="skills" />
@@ -217,7 +219,7 @@ const IndexPage = () => {
             Mahon Studios
           </Typography>
           <Typography use="body1" tag="i">
-            Owner / President • 2011 - Current (OH)
+            Owner / Creative Direction & Development • 2011 - Current (OH)
             <br />
             Designer / Developer / Photographer • 1999 - 2006 (OH)
           </Typography>
@@ -234,8 +236,7 @@ const IndexPage = () => {
           <Typography use="body1" tag="p">
             Mahon Studios is a full service interactive creative agency. Makers
             at heart, and with over 35 years of experience across a broad array
-            of disciplines, Mahon Studios has the skill and motivation to help
-            you achieve your vision.
+            of disciplines.
           </Typography>
 
           <Typography use="body1" tag="div">
@@ -243,16 +244,40 @@ const IndexPage = () => {
               Responsibilities
             </Typography>
             <ul>
-              <li>Graphic Design</li>
-              <li>Photography & Videography</li>
-              <li>Set, Exhibit, and Prop Design</li>
-              <li>3D Modeling, Animation, and Virtual Reality</li>
-              <li>Mobile, Desktop, and Web Application Development</li>
-              <li>Interactive Physical Computing</li>
-              <li>Print & Outdoor Media Design</li>
-              <li>Illustration</li>
-              <li>Copywriting</li>
-              <li>Small team management</li>
+              <li>
+                Designed thousands of client marketing materials for print,
+                outdoor, and interactive mediums.
+              </li>
+              <li>
+                Cultivated and managed hundreds of client relationships across
+                the US, some lasting over 20 years.
+              </li>
+              <li>Experience in a variety of roles on multiple team sizes.</li>
+              <li>
+                Managed typical business functions including payroll, taxes,
+                bookkeeping, and building maintenance.
+              </li>
+              <li>Regularly traveled for meetings, location shoots, etc.</li>
+              <li>
+                Designed and developed hundreds of complex mobile/web/desktop
+                client/server applications and websites.
+              </li>
+              <li>
+                Engineered, designed, and fabricated a variety of physical sets,
+                props, and interactive components.
+              </li>
+              <li>
+                Utilized fabrication technologies including 3D printing, CNC
+                machining, carpentry, and graphics production.
+              </li>
+              <li>
+                Produced regular studio and on-site photography and videography
+                projects, both commercial and portrait.
+              </li>
+              <li>
+                Created various 3D models, riggings, and animations for usage in
+                print, video, and game engines.
+              </li>
             </ul>
           </Typography>
           {/* <Typography use="body1" tag="p">
@@ -267,7 +292,7 @@ const IndexPage = () => {
             Prompter Communications
           </Typography>
           <Typography use="body1" tag="i">
-            Partner / Developer / Designer • 2011 - 2016 (OH)
+            Partner / Lead Developer / Designer • 2011 - 2016 (OH)
           </Typography>
           <Typography use="body1" tag="p">
             BarPrompter is an integrated marketing approach to building patron
@@ -282,10 +307,18 @@ const IndexPage = () => {
               Responsibilities
             </Typography>
             <ul>
-              <li>Graphic Design</li>
-              <li>Mobile, Desktop, and Web Application Development</li>
-              <li>Interactive Physical Computing</li>
-              <li>Copywriting</li>
+              <li>
+                Developed "BarPrompter", a patent pending interactive
+                application allowing users to interact in real-time with
+                distributed video systems in bars and restaurants
+              </li>
+              <li>
+                Developed "ElderVue", another patent pending system, allowing
+                users to remotely communicate with family members in nursing
+                homes via distributed video. HIPAA compliant transmission back
+                to users fromstaff.
+              </li>
+              <li>Co-managed a small sales team.</li>
             </ul>
           </Typography>
           <hr />
@@ -310,22 +343,36 @@ const IndexPage = () => {
             JNF is a nonprofit organization and United Nations NGO
             (non-governmental organization) that strives to bring an enhanced
             quality of life to all of Israel’s residents and translate these
-            advancements to the world beyond. JNF is “greening” the desert with
-            millions of trees, building thousands of parks across Israel,
-            creating new communities and cities for generations of Israelis to
-            call home, bolstering Israel’s water supply, helping develop
-            innovative arid agriculture techniques and educating both young and
-            old about the founding and importance of Israel and Zionism.
+            advancements to the world beyond.
           </Typography>
           <Typography use="body1" tag="div">
             <Typography use="overline" tag="span" style={{ display: 'block' }}>
               Responsibilities
             </Typography>
             <ul>
-              <li>Art Direction</li>
-              <li>Graphic Design</li>
-              <li>Managed small team of designers & developers</li>
-              <li>Mobile, Desktop, and Web Application Development</li>
+              <li>
+                Hired as a developer, consistently took on more responsibility
+                leading to a promotion as Creative Director.
+              </li>
+              <li>Designed full company rebrand with guidelines.</li>
+              <li>
+                Worked closely with the Director of Marketing to design and
+                implement fundraising campaign initiatives.
+              </li>
+              <li>Designed quarterly print magazine.</li>
+              <li>
+                Cut extraneous vendor costs by hiring and managing a small team
+                of creative designers.
+              </li>
+              <li>
+                Implemented and managed nationwide company content management
+                system and issue/task tracking.
+              </li>
+              <li>Mobile and website application development.</li>
+              <li>
+                Learned that I enjoy working on projects with meaningful impacts
+                and positive influences.
+              </li>
             </ul>
           </Typography>
           <Typography use="body1" tag="p">
@@ -414,35 +461,46 @@ const IndexPage = () => {
           </Typography>
         </GridCell>
         <GridCell span={8}>
-          <Typography use="headline5" tag="p">
-            University of Akron (Myers School of Art)
-          </Typography>
-          <Typography use="body1" tag="i">
-            Graphic Design • Spring 2006
-          </Typography>
-          <Typography use="body1" tag="p">
-            The largest program within the Myers School of Art. It is a
-            professional program for students pursuing careers in the expanding
-            multidisciplinary field of visual communication design. Critical
-            thinking and logical problem solving in print, web and interactive
-            media are emphasized.
-          </Typography>
-          <Typography use="body1" tag="p">
-            <Typography use="overline" tag="span" style={{ display: 'block' }}>
-              Activities and Societies
-            </Typography>
-            Phi Gamma Delta, International Business Club, H.O.L.A Spanish Club,
-            Various Art Clubs, Intramural Soccer
-          </Typography>
-          <Typography use="body1" tag="p">
-            <Typography use="overline" tag="span" style={{ display: 'block' }}>
-              Study Abroad - Universidad de Valladolid (España)
-            </Typography>
-            The DISSTA Study Abroad Program is an immersion learning experience
-            spent living and studying in Spain. Included international business
-            practicum. Received certificate of Spanish language & culture.
-          </Typography>
-          <hr />
+          <GridRow>
+            <GridCell span={12}>
+              <Typography use="headline5" tag="p">
+                University of Akron (Myers School of Art)
+              </Typography>
+              <Typography use="body1" tag="i">
+                Graphic Design • 2002 - 2006
+              </Typography>
+              <Typography use="body1" tag="p">
+                The largest program within the Myers School of Art. It is a
+                professional program for students pursuing careers in the
+                expanding multidisciplinary field of visual communication
+                design. Critical thinking and logical problem solving in print,
+                web and interactive media are emphasized.
+              </Typography>
+              <Typography use="body1" tag="p">
+                <Typography
+                  use="overline"
+                  tag="span"
+                  style={{ display: 'block' }}>
+                  Activities and Societies
+                </Typography>
+                Phi Gamma Delta, International Business Club, H.O.L.A Spanish
+                Club, Various Art Clubs, Intramural Soccer
+              </Typography>
+              <Typography use="body1" tag="p">
+                <Typography
+                  use="overline"
+                  tag="span"
+                  style={{ display: 'block' }}>
+                  Study Abroad - Universidad de Valladolid (España)
+                </Typography>
+                The DISSTA Study Abroad Program is an immersion learning
+                experience spent living and studying in Spain. Included
+                international business practicum. Received certificate of
+                Spanish language & culture.
+              </Typography>
+            </GridCell>
+          </GridRow>
+          {/* <hr />
           <Typography use="headline5" tag="p">
             Central Catholic High School
           </Typography>
@@ -455,7 +513,7 @@ const IndexPage = () => {
             </Typography>
             Architecture elective (4 years), Art elective (4 years), Advanced
             Placement (AP) Physics, Woodshop, Set Design (Theatre)
-          </Typography>
+          </Typography> */}
         </GridCell>
       </Grid>
     </>
