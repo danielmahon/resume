@@ -3,10 +3,8 @@ import { IconButton } from '@rmwc/icon-button';
 import styled from 'styled-components';
 import {
   SiGithub,
-  SiFacebook,
   SiLinkedin,
   SiTwitter,
-  SiInstagram,
 } from 'react-icons/si';
 
 const Icons = styled.div`
@@ -38,27 +36,11 @@ export const SocialIcons = () => {
       />
       <IconButton
         icon={{
-          icon: <SiFacebook />,
-        }}
-        onClick={() => window.open('https://www.facebook.com/danielmahon')}
-        rel="noopener noreferrer"
-        aria-label="Find me on Facebook!"
-      />
-      <IconButton
-        icon={{
           icon: <SiTwitter />,
         }}
         onClick={() => window.open('https://twitter.com/danielmahon')}
         rel="noopener noreferrer"
         aria-label="Follow me on Twitter!"
-      />
-      <IconButton
-        icon={{
-          icon: <SiInstagram />,
-        }}
-        onClick={() => window.open('https://www.instagram.com/daniel_mahon/')}
-        rel="noopener noreferrer"
-        aria-label="Follow me on Instagram!"
       />
     </Icons>
   );
