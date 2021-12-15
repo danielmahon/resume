@@ -128,6 +128,8 @@ const IndexPage = () => {
                 <Typography use="body1" tag="p">
                   Daniel Mahon
                   <br />
+                  Akron, OH
+                  <br />
                   (646) 812-4550
                   <br />
                   daniel@mahonstudios.com
