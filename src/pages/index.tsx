@@ -128,10 +128,6 @@ const IndexPage = () => {
                 <Typography use="body1" tag="p">
                   Daniel Mahon
                   <br />
-                  570 Fairhill Dr.
-                  <br />
-                  Akron, OH 44313
-                  <br />
                   (646) 812-4550
                   <br />
                   daniel@mahonstudios.com
